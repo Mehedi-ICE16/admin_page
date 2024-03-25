@@ -11,8 +11,8 @@ export class LoginApiService {
 
   root = 'http://localhost:3000';
 
-  login (email: string, password: string) : Observable<IEmployee> {
-    return this.http.post<IEmployee>(this.root + '/signin', { email, password });
+  login (email: string, password: string) : Observable<any> {
+    return this.http.post<any>(this.root + '/signin', { email, password });
   }
 
   getAllEmployee () : Observable<IEmployee[]> {

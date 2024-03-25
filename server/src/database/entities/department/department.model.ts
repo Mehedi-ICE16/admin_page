@@ -9,12 +9,12 @@ import { IDepartment } from '../../interfaces/department.interface';
 })
 export class department extends Model<IDepartment> {
     @Column({
-        type: DataTypes.STRING,
+        autoIncrement: true,
         primaryKey: true,
         unique: true,
         allowNull: false,
     })
-    id: string;
+    id: number;
 
     @Column({
         type: DataTypes.STRING,

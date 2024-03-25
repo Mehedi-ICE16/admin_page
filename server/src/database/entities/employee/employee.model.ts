@@ -18,12 +18,12 @@ import { employee_stats } from '../employee_stats/employee_stats.model';
 })
 export class employee extends Model<employee> {
   @Column({
-    type: DataTypes.STRING,
+    autoIncrement: true,
     primaryKey: true,
     unique: true,
     allowNull: false,
   })
-  id: string;
+  id: number;
 
   @Column({
     type: DataTypes.STRING,
@@ -59,10 +59,9 @@ export class employee extends Model<employee> {
 
   @ForeignKey(() => role)
  @Column({
-  type: DataTypes.STRING, 
   allowNull: false,
  })
-role_id: string;
+role_id: number;
 
   @BelongsTo(() => role)
   role: role;

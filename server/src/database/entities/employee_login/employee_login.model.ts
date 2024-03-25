@@ -9,12 +9,12 @@ import { employee } from '../employee/employee.model';
 
 export class employee_login extends Model<employee_login> {
     @Column({
-        type: DataTypes.STRING,
+        autoIncrement: true,
         primaryKey: true,
         unique: true,
         allowNull: false,
     })
-    id: string;
+    id: number;
 
     @Column({
         type: DataTypes.STRING,
@@ -31,10 +31,9 @@ export class employee_login extends Model<employee_login> {
 
     @ForeignKey(() => employee)
     @Column({
-        type: DataTypes.STRING,
         allowNull: false
     })
-    employee_id: string;
+    employee_id: number;
   
     @BelongsTo(() => employee)
     employee: employee;

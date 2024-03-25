@@ -20,13 +20,16 @@ import { employeeLoginProvider } from '../employee_login/employee_login.provider
     ],
   })
 
-  // export class DepartmentModule { }
 
-  // ,JwtModule.register({ secret: 'my_secret_key', signOptions: { expiresIn: '12h' } })
-
-  export class DepartmentModule implements NestModule {
+   export class DepartmentModule implements NestModule {
     configure(consumer: MiddlewareConsumer) {
       consumer
         .apply(JwtMiddleware).forRoutes(DepartmentController);
     }
   }
+
+  // export class DepartmentModule { }
+
+  // ,JwtModule.register({ secret: 'my_secret_key', signOptions: { expiresIn: '12h' } })
+
+ 

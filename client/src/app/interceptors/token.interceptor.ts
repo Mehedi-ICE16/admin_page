@@ -18,9 +18,9 @@ export class TokenInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       tap((event) => {
+        console.log(event);
         if (event instanceof HttpResponse) {
-          const bearerToken = event.headers.get('Authorization');
-          console.log(bearerToken);
+          const bearerToken = event.body.token;
           if (bearerToken) {
             const token = bearerToken.split(' ')[1];
             localStorage.setItem('token', token);

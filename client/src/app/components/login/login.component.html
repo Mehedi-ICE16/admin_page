@@ -1,20 +1,29 @@
-<div id="container">
-    <div>
-        <img src="../../assets/logo.png" alt="prime_logo">
-        <h1>Prime Bank</h1>
-    </div>
-    <h2>Sign in</h2>
-    <div>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div>
-                <label for="email">Email: </label>
-                <input type="email" id="email" formControlName="email">
-            </div>
-            <div>
-                <label for="password">Password: </label>
-                <input type="password" id="password" formControlName="password">
-            </div>
-            <button type="submit" id="signin-btn">Sign In</button>
-        </form>
+
+<div class="container">
+    <div id="container" >
+        <div id="header">
+            <img src="../../assets/logo.png" style="width: 80px; height: 80px;" alt="prime_logo">
+            <h1 style="display: inline;font-weight: 700;font-size: xx-large; margin-top: 30px;">Prime Bank</h1>
+            <h2>Sign in</h2>
+        </div>
+        <div>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div>
+                    <!-- <label for="email">Email: </label> -->
+                    <input type="email" id="email" formControlName="email" placeholder="Email">
+                </div>
+                <div>
+                    <!-- <label for="password">Password: </label> -->
+                    <input type="password" id="password" formControlName="password" placeholder="Password">
+                </div>
+                <div style="margin: 5px">
+                    <input type="checkbox" style="margin:5px"> <span style="margin:10px">Remember me</span> <span style="margin-left: 80px">Forgot Password ?</span>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center ; margin: 5px;">
+                    <button type="submit" id="signin-btn">Sign In</button>
+                    <h4>Sign in as Employee</h4>
+                </div>
+            </form>
+        </div>
     </div>
 </div>

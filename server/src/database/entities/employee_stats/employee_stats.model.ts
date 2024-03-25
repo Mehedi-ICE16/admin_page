@@ -9,24 +9,22 @@ import { employee } from '../employee/employee.model';
 
 export class employee_stats extends Model<employee_stats> {
     @Column({
-        type: DataTypes.STRING,
+        autoIncrement: true,
         primaryKey: true,
         unique: true,
         allowNull: false,
     })
-    id: string;
+    id: number;
 
     @Column({
-        type: DataTypes.STRING,
         allowNull: false,
     })
-    workflow_id: string;
+    workflow_id: number;
 
     @Column({
-        type: DataTypes.STRING,
         allowNull: false,
     })
-    role_id: string;
+    role_id: number;
 
     @Column({
         type: DataTypes.DATE,
@@ -40,21 +38,20 @@ export class employee_stats extends Model<employee_stats> {
     end_timestamp: Date;
 
     @Column({
-        type: DataTypes.STRING
+        type: DataTypes.DATE
     })
-    time_allotted: string;
+    time_allotted: Date;
 
     @Column({
-        type: DataTypes.STRING
+        allowNull: true,
     })
-    error_count: string;
+    error_count: number;
 
     @ForeignKey(() => employee)
     @Column({
-        type: DataTypes.STRING,
         allowNull: false
     })
-    employee_id: string;
+    employee_id: number;
   
     @BelongsTo(() => employee)
     employee: employee;

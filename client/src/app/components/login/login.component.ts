@@ -22,14 +22,14 @@ ngOnInit(): void {
 }
 
 onSubmit() {
-  console.log(this.loginForm.value);
   const { email, password } = this.loginForm.value;
   if (email && password)
     this.api.login(email!, password!).subscribe({
       next: data => {
-        console.log('Success! \n', data);
         this.loginForm.reset();
-        this.router.navigateByUrl('/dashboard');
+        if(data.token){
+          this.router.navigate(['dashboard']);
+        }
       },
       error: err => {
         console.error(err);
