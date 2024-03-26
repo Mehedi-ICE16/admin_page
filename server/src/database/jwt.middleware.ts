@@ -11,8 +11,8 @@ export class JwtMiddleware implements NestMiddleware {
 
     try {
         // console.log("req: ",req.rawHeaders[1]);
-        const authHeaders = req.rawHeaders[1];
-        // const authHeaders = req.headers["authorization"]; doesn't work
+        // const authHeaders = req.rawHeaders[1];
+        const authHeaders = req.headers["authorization"]; //doesn't work
         if (!authHeaders) return res.status(401).json({ message: "Unauthorized" });
         const token = authHeaders.split(" ")[1];
         // console.log("token: ",token);
@@ -22,11 +22,11 @@ export class JwtMiddleware implements NestMiddleware {
     
         if (data && data.email) {
           const user = await this.loginService.findByEmail(data.email);
-        //   console.log("user: ",user);
+          // console.log("user: ",user);
           if (user) {
             req['user']  = user;
             next();
-          } else return res.status(401).json({ message: "Unauthorized" });
+          } else return res.status(401).json({ message: "Unauthorized from user" });
         } else return res.status(401).json({ message: "Unauthorized" });
       } catch (error) {
         console.log(error);

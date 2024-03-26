@@ -1,0 +1,197 @@
+#container {
+    display: flex;
+    gap: 20px; 
+    align-items: center; 
+    justify-content: center;
+    margin:0;
+    padding: 0;
+    background-color: #F6F6F6;
+    position:absolute;
+    z-index: 1;
+}
+
+.team-roles {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40dvw;
+    height: 70dvh;
+    /* background-color: rgb(251, 249, 247); */
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    /* transform: translate(-50%, -50%); */
+}
+
+.dashboard-disble-blur {
+    filter: blur(2px);
+    pointer-events: none;
+}
+
+#left-sidebar{
+    width: 7dvw; 
+    height: 100dvh; 
+    background-color: azure;  
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px; 
+    align-items: center; 
+    justify-content: center;
+    /* box-shadow: 0 4px 8px  rgb(69, 153, 153); */
+    /* border-radius: 10px; */
+    margin-left: 0%;
+    /* border-left: 10px solid azure;
+    border-right: 10px solid azure; */
+
+}
+
+#logo {
+    width:100%;
+    height: 15%; 
+    padding: 10px;
+}
+#dashboard-logo {
+    width:100%;
+    height: 15%; 
+    padding: 10px;
+}
+#team {
+    width:100%;
+    height: 15%; 
+    padding: 10px;
+}
+#people {
+    width:100%;
+    height: 15%; 
+    padding: 10px;
+}
+#workflow {
+    width:100%;
+    height: 15%; 
+    padding: 10px;
+}
+
+#signout {
+    width:100%;
+    height: 15%; 
+    padding: 10px;
+}
+#main {
+    width: 50dvw; 
+    height: 98dvh; 
+    /* background-color: rgb(220, 233, 233);  */
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px;
+}
+
+#body {
+    width: 95%; 
+    height: 95%; 
+    margin-left: 3%;
+    /* background-color: red;  */
+    display: flex; 
+    /* padding: 5px; */
+    gap: 10px
+}
+#success-rate {
+    width: 48%; 
+    height: 90%; 
+    background-color: rgb(223, 223, 208);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px  rgb(163, 169, 169);
+    text-align: center;
+}
+#completion-time {
+    width: 48%; 
+    height: 90%; 
+    background-color: rgb(135, 169, 135);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px  rgb(163, 169, 169);
+    text-align: center;
+}
+#error-rate {
+    width: 95%; 
+    height: 90%; 
+    /* background-color: rgb(229, 229, 233); */
+    background-color: rgb(229, 229, 233);
+    border-radius: 10px;
+    margin-left: 3%;
+    margin-bottom: 2%;
+    padding: 5px;
+    box-shadow: 0 4px 8px  rgb(163, 169, 169);
+    text-align: center;
+}
+#right-sidebar {
+    width: 40dvw; 
+    height: 95dvh; 
+    /* background-color: #FFFFFF;  */
+    display: flex; 
+    flex-direction: column; 
+    gap: 5px
+}
+#daily-target{
+    width: 98%; 
+    height: 40%; 
+    background-color: rgb(231, 231, 215);
+    border-radius: 10px;
+    margin-left: 1%;
+    text-align: center;
+    /* margin-right: 1%; */
+}
+#card1{
+    width: 98%; 
+    height: 18%; 
+    background-color: #d6c9c9;
+    border-radius: 10px;
+    margin-left: 1%;
+    margin-right: 1%;
+    text-align: center;
+}
+#card2{
+    width: 98%; 
+    height: 18%; 
+    background-color: #d6c9c9;
+    border-radius: 10px;
+    margin-left: 1%;
+    margin-right: 1%;
+    text-align: center;
+}
+#card3{
+    width: 98%; 
+    height: 18%; 
+    background-color: #d6c9c9;
+    border-radius: 10px;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+#plus-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; /* Adjust width as needed */
+    height: 20px; /* Adjust height as needed */
+    border-radius: 50%; /* Make the button round */
+    font-size: 20px; /* Adjust font size as needed */
+    border-style: none;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #decfcf; /* Button background color */
+    margin: 10px;
+    padding: 2px;
+  }
+  
+#search {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    height: 8%;
+    width: 90%;
+    margin: 5%;
+    text-align: center;
+    border-style: none;
+}

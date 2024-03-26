@@ -1,4 +1,4 @@
-import { Controller, Post, Get, Put, Delete, Body,Param } from '@nestjs/common';
+import { Controller, Post, Get, Put, Delete, Body,Param,ParseIntPipe } from '@nestjs/common';
 import { TeamService } from './team.service';
 
 @Controller('/team')
@@ -23,5 +23,11 @@ export class TeamController {
   @Delete(':id')
   async deleteTeam(@Param('id') id: string): Promise<void> {
     await this.teamService.deleteTeam(id);
+  }
+
+  @Get('/:id')
+  async findOne(@Param('id') id: number): Promise<any>{
+    console.log("controller id: " + id);
+    return this.teamService.findOneById(id);
   }
 }

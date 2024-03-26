@@ -7,6 +7,8 @@ import { DatabaseModule } from '../../database.module';
 import { JwtMiddleware } from '../../jwt.middleware';
 import { EmployeeLoginService } from '../employee_login/employee_login.service';
 import { employeeLoginProvider } from '../employee_login/employee_login.provider';
+import { EmployeeService } from '../employee/employee.service';
+import { employeeProvider } from '../employee/employee.provider';
 
 @Module({
     imports: [DatabaseModule,JwtModule.register({ secret: 'my_secret_key', signOptions: { expiresIn: '12h' } })],
@@ -16,7 +18,9 @@ import { employeeLoginProvider } from '../employee_login/employee_login.provider
       roleProvider,
       JwtMiddleware,
       EmployeeLoginService,
-      employeeLoginProvider
+      employeeLoginProvider,
+      EmployeeService,
+      employeeProvider
     ],
   })
 

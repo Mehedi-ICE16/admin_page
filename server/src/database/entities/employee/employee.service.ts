@@ -20,6 +20,10 @@ export class EmployeeService {
     return this.employeeRepository.findOne<employee>( { where: {email} } );
   }
 
+  async findAllEmployeeByRoleId(id: number[]): Promise<employee[]> {
+    return this.employeeRepository.findAll<employee>({ where: { role_id: id } });
+  }
+
   async updateEmployeeInfo(id: string, updateData: Partial<any>): Promise<void> {
     await this.employeeRepository.update(updateData, { where: { id } });
   }

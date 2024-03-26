@@ -1,41 +1,51 @@
-<!-- <div>
-  <div>
-    <div style="width: 5dvw;"> 
-    <ul style="list-style-type: none; display: flex; flex-direction: column;">
-      <li style="display: inline; padding: 5px"><img src="../../../assets/logo3d.png" height="80px" width="80px"> </li>
-      <li style="display: inline; padding: 5px"><img src="../../../assets/dashboard_logo_96.png" height="80px" width="80px"> </li>
-      <li style="display: inline; padding: 5px"><img src="../../../assets/team.png" height="80px" width="80px"> </li>
-      <li style="display: inline; padding: 5px"><img src="../../../assets/people.png" height="80px" width="80px"> </li>
-      <li style="display: inline; padding: 5px"><img src="../../../assets/workflow.png" height="80px" width="80px"> </li>
-      <li style="display: inline; padding: 5px"><img src="../../../assets/signout.png" height="80px" width="80px"> </li>
-    </ul>
-  </div>
-    <div style="height: 100px; width: 100px; background-color: aqua;"></div>
-  </div>
-  
-</div> -->
+<div style="position: relative;">
+<div id = "container">
+  <div id = "left-sidebar">
 
-<div style="display: flex; gap: 5px; align-items: center; justify-content: center;">
-  <div style="width: 10dvw; height: 100dvh; background-color: azure;  display: flex; flex-direction: column; gap: 5px; align-items: center; justify-content: center;">
-     <div style="width:90%;height: 15%; background-color: black;"></div>
-     <div style="width:90%;height: 15%; background-color: rgb(233, 22, 22);"></div>
-     <div style="width:90%;height: 15%; background-color: black;"></div>
-     <div style="width:90%;height: 15%; background-color: rgb(190, 31, 31);"></div>
-     <div style="width:90%;height: 15%; background-color: black;"></div>
-     <div style="width:90%;height: 15%; background-color: rgb(197, 21, 21);"></div>
+     <div id = "logo"><img src="../../../assets/logo3d.png" height="80%" width="80%"></div>
+
+     <div id = "dashboard-logo"><img src="../../../assets/dashboard_logo_96.png" height="80%" width="80%"> </div>
+
+     <div id = "team" (click)="teamClicked()"><img src="../../../assets/team.png" height="80%" width="80%" title="Teams & Roles"></div>
+
+     <div id = "people"><img src="../../../assets/people.png" height="80%" width="80%" title="People"></div>
+
+     <div id = "workflow"><img src="../../../assets/workflow.png" height="80%" width="80%"title="Workflow"> </div>
+
+     <div id = "signout"><img src="../../../assets/signout.png" height="80%" width="80%" title="Sign Out"> </div>
+
   </div>
-  <div style="width: 50dvw; height: 80dvh; background-color: aqua; display: flex; flex-direction: column; gap: 5px;">
-    <div style="width: 100%; height: 100%; background-color: red; display: flex; gap: 10px">
-        <div style="width: 48%; height: 90%; background-color: yellow;"></div>
-        <div style="width: 48%; height: 90%; background-color: green;"></div>
+
+  <div id = "main" [ngClass]="{'dashboard-disble-blur' : team}">
+    <h2 style="font-weight: bold; font-size: xx-large; text-align: left; margin: 10px; color: #746363">Dashboard</h2>
+
+    <div id = "body">
+
+        <div id = "success-rate"><span style="font-weight: bold; font-size: large;">A/C Opening Success Rate</span></div>
+
+        <div id = "completion-time"><span style="font-weight: bold; font-size: large;">Activity Completion Time</span></div>
+
     </div>
-    <div style="width: 100%; height: 90%; background-color: blue;"></div>
-  </div>
-  <div style="width: 40dvw; height: 80dvh; background-color: green; display: flex; flex-direction: column; gap: 5px">
-    <div style="width: 100%; height: 40%; background-color: yellow;"></div>
-    <div style="width: 100%; height: 20%; background-color: rgb(10, 10, 8);"></div>
-    <div style="width: 100%; height: 20%; background-color: yellow;"></div>
-    <div style="width: 100%; height: 18%; background-color: rgb(46, 46, 33);"></div>
+
+    <div id = "error-rate"><span style="font-weight: bold; font-size: large;">Error Rate</span></div>
+
   </div>
 
+  <div id = "right-sidebar" [ngClass]="{'dashboard-disble-blur' : team}">
+    <input type="text" placeholder="Search for anything..." id="search">
+    <!-- <img src = "https://fontawesome.com/v5/icons/search?f=classic&s=solid"> -->
+    <i class="fas fa-search"></i>
+
+    <div id = "daily-target"><span style="font-weight: bold; font-size: large;">Daily Target Achieved</span></div>
+    <div><span style="font-weight: bold; font-size: large;">Cards</span><button type="button" id="plus-button">+</button></div>
+
+    <div id = "card1"><span style="font-weight: bold; font-size: large;">Total Card Issued</span></div>
+
+    <div id = "card2"><span style="font-weight: bold; font-size: large;">Total A/C Turnover</span></div>
+
+    <div id="card3"><span style="font-weight: bold; font-size: large;">Total Check Book Issued</span></div>
+
+  </div>
+</div>
+<team-roles class = "team-roles" *ngIf="team"></team-roles>
 </div>

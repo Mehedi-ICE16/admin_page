@@ -15,7 +15,8 @@ export class LoginApiService {
     return this.http.post<any>(this.root + '/signin', { email, password });
   }
 
-  getAllEmployee () : Observable<IEmployee[]> {
-    return this.http.get<IEmployee[]>(this.root + '/employee');
+  getAllEmployee (id:number) : Observable<any> {
+    console.log(id);
+    return this.http.get<any>(this.root + '/role/team/'+id);
   }
 }
