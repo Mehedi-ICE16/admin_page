@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { TeamApiService } from '../../services/team-api.service';
 import { ITeam } from '../../interfaces/team.interface';
 import { LoginApiService } from '../../services/login-api.service';
+import { SharedDataService } from '../../services/shared-data.service';
 
 @Component({
   selector: 'team-roles',
@@ -12,11 +13,12 @@ export class TeamRolesComponent implements OnInit {
 
   teams: ITeam[] = [];
 
-  constructor(private teamApi: TeamApiService, private employeeApi: LoginApiService) { }
+  constructor(private teamApi: TeamApiService, private employeeApi: LoginApiService, private sharedService: SharedDataService) { }
 
   ngOnInit(): void {
     this.teamApi.getAllTeam().subscribe({
       next: data => {
+        console.log(data);
         this.teams = data;
       },
       error: err => {
@@ -26,7 +28,8 @@ export class TeamRolesComponent implements OnInit {
   }
 
   teamClicked(i: number) {
-    this.employeeApi.getAllEmployee(this.teams[i].id).subscribe(data => {
+     this.employeeApi.getAllEmployee(this.teams[i].id).subscribe(data => {
+      this.sharedService.setEmployeeListOfSelectedTeam(data);
       console.log(data);
     })
   }
