@@ -6,7 +6,7 @@
 
      <div id = "dashboard-logo"><img src="../../../assets/dashboard_logo_96.png" height="80%" width="80%"> </div>
 
-     <div id = "team" (click)="teamClicked()"><img src="../../../assets/team.png" height="80%" width="80%" title="Teams & Roles"></div>
+     <div id = "team" (click)="teamClicked()"><img src="../../../assets/team.png" [style.background-color]="team?'#34639f':'#FFFFFF'" height="80%" width="80%" title="Teams & Roles"></div>
 
      <div id = "people"><img src="../../../assets/people.png" height="80%" width="80%" title="People"></div>
 
@@ -32,10 +32,9 @@
   </div>
 
   <div id = "right-sidebar" [ngClass]="{'dashboard-disble-blur' : team}">
-    <input type="text" placeholder="Search for anything..." id="search">
-    <!-- <img src = "https://fontawesome.com/v5/icons/search?f=classic&s=solid"> -->
-    <i class="fas fa-search"></i>
-
+  <div id="search-container">
+    <input type="text" placeholder="Search for anything..." id="search"><i class="fas fa-search"></i>
+  </div>
     <div id = "daily-target"><span style="font-weight: bold; font-size: large;">Daily Target Achieved</span></div>
     <div><span style="font-weight: bold; font-size: large;">Cards</span><button type="button" id="plus-button">+</button></div>
 
@@ -48,4 +47,5 @@
   </div>
 </div>
 <team-roles class = "team-roles" *ngIf="team"></team-roles>
+<team-roles2 *ngIf = "team" id = "team-roles2"></team-roles2>
 </div>

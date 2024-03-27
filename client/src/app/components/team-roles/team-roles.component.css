@@ -8,9 +8,12 @@
 
 .team-container div {
     background-color:  #34639F;
-    width: 30dvw;
+    width: 20dvw;
     border-radius: 5px;
-    height: auto;
+    height: 7dvh;
     padding: 10px;
-    color: #FFFFFF;
+    color: #f2eaea;
+    font-size: medium;
+    font-weight: 400;
+    text-align: center;
 }

@@ -19,6 +19,9 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { TeamRolesComponent } from './components/team-roles/team-roles.component';
+import { TeamRoles2Component } from './components/team-roles2/team-roles2.component';
+import { NzTableModule } from 'ng-zorro-antd/table';
+  
 
 registerLocaleData(en);
 
@@ -27,7 +30,8 @@ registerLocaleData(en);
     AppComponent,
     LoginComponent,
     DashboardComponent,
-    TeamRolesComponent
+    TeamRolesComponent,
+    TeamRoles2Component
   ],
   imports: [
     BrowserModule,
@@ -37,7 +41,8 @@ registerLocaleData(en);
     HttpClientModule,
     NzLayoutModule,
     NzMenuModule,
-    NzBreadCrumbModule
+    NzBreadCrumbModule,
+    NzTableModule
   ],
   providers: [
     {

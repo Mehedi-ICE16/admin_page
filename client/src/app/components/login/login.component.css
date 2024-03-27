@@ -2,10 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../../../assets/login.png');
-    background-size: contain;
-    /* background-position: 600px 100px;  */
-    background-repeat: no-repeat;
+    background-image: url('../../../assets/loginBackground.png');
+    background-size: 100dvh;
+    /* background-position: 600px 50px;  */
+    /* background-repeat: no-repeat; */
 }
 #header{
     justify-content: center;
@@ -23,33 +23,41 @@ h2{
 #container {
     border-radius: 5%;
     margin-top: 10dvh;
-    width: 30vw;
+    width: 25vw;
     height: 70dvh;
     display:flex;
     flex-direction: column;
     gap: 5px;
     justify-content: center;
     align-items: center;
-    background-color: rgb(232, 232, 240);
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #email,#password {
-    background-color: #b4bfc6;
-    padding: 5px;
+    background-color: #ECF7FF;
+    padding: 10px;
     border-style: none;
     margin: 5px;
     border-radius: 5px;
-    color: #ffffff;
-    width: 25vw;
-    text-align: center;
+    /* color: #ffffff; */
+    width: 20vw;
+    text-align: left;
     height: 7dvh;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 1px 1px 1px 1px rgb(187,187,187,1); */
+}
+
+#email:focus,#password:focus{
+    outline: rgb(102, 102, 207);
+    border: 2px solid rgb(112, 112, 178);
 }
 #signin-btn{
     background-color: #5D8AC4;
     margin-left: 100px;
     padding: 5px;
     border-style: none;
-    margin: 5px;
+    margin: 20px;
     border-radius: 5px;
     color: #ffffff;
     width: 8vw;
