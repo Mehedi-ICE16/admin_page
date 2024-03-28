@@ -5,6 +5,10 @@ interface DataItem {
   name: string;
   email: string;
   role: string;
+  phone?: string;
+  active?: boolean;
+  admin?: boolean;
+  role_id?: number;
 }
 
 interface ColumnItem {
@@ -17,7 +21,7 @@ interface ColumnItem {
   sortDirections: NzTableSortOrder[];
 }
 
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { SharedDataService } from '../../services/shared-data.service';
 
 @Component({
@@ -25,20 +29,36 @@ import { SharedDataService } from '../../services/shared-data.service';
   templateUrl: './team-roles2.component.html',
   styleUrl: './team-roles2.component.css'
 })
-export class TeamRoles2Component {
+export class TeamRoles2Component implements OnInit{
 
   selectedTeam: string = 'Team 1';
+  teamEmployee: [] = [];
+  roleName: string[] = [];
+  roleId: number[] = [];
+  selectedRoleClass!: string;
 
-  employeeListOfSelectedTeam: any[] = [];
+  constructor( private sharedService: SharedDataService) { 
+    this.selectedRoleClass = 'reviewer';
+   }
 
-  constructor( private sharedService: SharedDataService) {
-    this.employeeListOfSelectedTeam = this.sharedService.getEmployeeListOfSelectedTeam();
-    console.log( "employee list: "+this.employeeListOfSelectedTeam)
+  ngOnInit(): void {
+    this.sharedService.data$.subscribe(data => {
+      console.log("team&roles2: " + data.roleName );
+      this.roleName = data.data.roleName;
+      this.teamEmployee = this.listOfData = data.data.employees;
+      console.log(data.employees);
+      console.log(data.data.roleName[data.data.roleId.indexOf(data.data.employees[0].role_id)]);
+      this.roleId = data.data.roleId;
+      this.selectedTeam = data.name;
+    });
   }
 
+  selectedRole!: string;
 
-  options = ['Admin','Reviewer','Maker','Checker'];
-  selectedOption: string = 'Admin';
+  onRoleChange(event: any,i:number) {
+    this.selectedRole = event.target.value;
+    console.log(this.selectedRole);
+  }
   listOfColumns: ColumnItem[] = [
     {
       name: 'Employee Id',
@@ -93,78 +113,5 @@ export class TeamRoles2Component {
       sortDirections: ['ascend', 'descend', null]
     }
   ];
-  listOfData: DataItem[] = [
-    {
-      id: 1,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 2,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 3,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 4,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 1,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 2,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 3,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 4,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 1,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 2,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 3,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    },
-    {
-      id: 4,
-      name: 'John Brown',
-      email: 'New York No. 1 Lake Park',
-      role: 'admin'
-    }
-  ];
+  listOfData: DataItem[] = [  ];
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,ViewChild,ElementRef } from '@angular/core';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,7 +9,7 @@ export class DashboardComponent {
   team: boolean = false;
 
   constructor() { }
- teamClicked(){
-   this.team = !this.team;
+ teamClicked(team: boolean) {
+   this.team = !team;
  }
 }

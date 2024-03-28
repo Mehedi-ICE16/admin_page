@@ -1,32 +1,43 @@
-   
-   <h1>Teams & Roles > {{selectedTeam}}</h1>
-   <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed">
-      <thead>
-        <tr>
-          <th
-            *ngFor="let column of listOfColumns"
-            [nzSortOrder]="column.sortOrder"
-            [nzSortFn]="column.sortFn"
-            [nzSortDirections]="column.sortDirections"
-            [nzFilterMultiple]="column.filterMultiple"
-            [nzFilters]="column.listOfFilter"
-            [nzFilterFn]="column.filterFn"
-          >
-            {{ column.name }}
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let data of filterTable.data ; let i = index"> <!-- listOfData -->
-          <td>{{ data.id }}. <img src="../../../assets/people.png" height="30px" width="30px"></td>
-          <td>{{ data.name }}</td>
-          <td>{{ data.email }}</td>
-          <td>
-            <select>
-              <option *ngFor="let option of options" [value]="option">{{ option }}</option>
-            </select>
-          </td>
-        </tr>
-      </tbody>
-    </nz-table>
-
+<div class="container">
+     
+  <h2>Teams & Roles > {{selectedTeam}}</h2>
+  <div style="display: flex; ">
+   <div style="display:flex;">
+     <img src="../../../assets/people.png" height="80px" width="80px">
+     <span style="display: inline-flex; flex-direction: column; ">
+       Admin Name<br>Role<br>Location
+     </span>
+   </div>
+   <div style="text-align: center; height: 50px; width: 50px; border-radius: 50%; background-color: aliceblue; font-weight: 600; font-size: x-large; margin-top: 10px; padding-top: 5px;">+</div>
+  </div>
+  <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed">
+     <thead>
+       <tr>
+         <th
+           *ngFor="let column of listOfColumns; let i =index"
+           [nzSortOrder]="column.sortOrder"
+           [nzSortFn]="column.sortFn"
+           [nzSortDirections]="column.sortDirections"
+           [nzFilterMultiple]="column.filterMultiple"
+           [nzFilters]="column.listOfFilter"
+           [nzFilterFn]="column.filterFn"
+           [class.employee-id] = "i==0"
+         >
+           {{ column.name }}
+         </th>
+       </tr>
+     </thead>
+     <tbody>
+       <tr *ngFor="let data of filterTable.data ; let i = index"> <!-- listOfData -->
+         <td class = "employee-id">{{ data.id }}</td>
+         <td><img src="../../../assets/people.png" height="30px" width="30px"> {{ data.name | titlecase}}</td>
+         <td>{{ data.email }}</td>
+         <td>
+           <select (change)="onRoleChange($event,i)" [ngClass]="{ 'reviewer': data.role_id === roleName.indexOf('Reviwer')+2,'maker': data.role_id === roleName.indexOf('Maker')+2,'checker': data.role_id === roleName.indexOf('checker')+ 2 }">
+             <option *ngFor="let role of roleName; let i = index" [value]="role!" [selected]="data.role_id === i+2">{{ role | titlecase }}</option>
+           </select>
+         </td>
+       </tr>
+     </tbody>
+   </nz-table>
+</div>

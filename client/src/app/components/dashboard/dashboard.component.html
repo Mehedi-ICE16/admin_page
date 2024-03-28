@@ -2,19 +2,21 @@
 <div id = "container">
   <div id = "left-sidebar">
 
-     <div id = "logo"><img src="../../../assets/logo3d.png" height="80%" width="80%"></div>
+     <!-- <div id = "logo"><img src="../../../assets/logo3d.png" height="80%" width="80%"></div>
 
      <div id = "dashboard-logo"><img src="../../../assets/dashboard_logo_96.png" height="80%" width="80%"> </div>
 
      <div id = "team" (click)="teamClicked()"><img src="../../../assets/team.png" [style.background-color]="team?'#34639f':'#FFFFFF'" height="80%" width="80%" title="Teams & Roles"></div>
 
-     <div id = "people"><img src="../../../assets/people.png" height="80%" width="80%" title="People"></div>
-
+     <div id = "people"></div>
+    <img src="../../../assets/people.png" height="80%" width="80%" title="People"> 
      <div id = "workflow"><img src="../../../assets/workflow.png" height="80%" width="80%"title="Workflow"> </div>
 
-     <div id = "signout"><img src="../../../assets/signout.png" height="80%" width="80%" title="Sign Out"> </div>
+     <div id = "signout"><img src="../../../assets/signout.png" height="80%" width="80%" title="Sign Out"> </div> -->
 
-  </div>
+     <app-sidebar (dataEvent)="teamClicked($event)"></app-sidebar>
+  </div> 
+
 
   <div id = "main" [ngClass]="{'dashboard-disble-blur' : team}">
     <h2 style="font-weight: bold; font-size: xx-large; text-align: left; margin: 10px; color: #746363">Dashboard</h2>
