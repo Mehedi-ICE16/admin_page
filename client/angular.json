@@ -43,7 +43,7 @@
               "src/theme.less",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [  "node_modules/apexcharts/dist/apexcharts.min.js" ]
           },
           "configurations": {
             "production": {
@@ -102,10 +102,13 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [  "node_modules/apexcharts/dist/apexcharts.min.js" ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "744d8af7-9708-4927-bd17-1f82ac53871c"
   }
 }

@@ -23,13 +23,37 @@
 
     <div id = "body">
 
-        <div id = "success-rate"><span style="font-weight: bold; font-size: large;">A/C Opening Success Rate</span></div>
+        <div id = "success-rate"><span style="font-weight: bold; font-size: large;">A/C Opening Success Rate</span>
+          <apx-chart
+          [series]="chartOptions1.series"
+          [chart]="chartOptions1.chart"
+          [labels]="chartOptions1.labels"
+          [fill]="chartOptions1.fill"
+          [dataLabels]="chartOptions1.dataLabels"
+          [responsive]="chartOptions1.responsive"
+        ></apx-chart>
+        </div>
 
-        <div id = "completion-time"><span style="font-weight: bold; font-size: large;">Activity Completion Time</span></div>
+        <div id = "completion-time">
+           <apx-chart [series]="series" [chart]="chart" [title]="title" style="width:100%"></apx-chart>
+        </div>
 
     </div>
 
-    <div id = "error-rate"><span style="font-weight: bold; font-size: large;">Error Rate</span></div>
+    <div id = "error-rate">
+      <apx-chart
+      [series]="chartOptions2.series"
+      [chart]="chartOptions2.chart"
+      [xaxis]="chartOptions2.xaxis"
+      [stroke]="chartOptions2.stroke"
+      [tooltip]="chartOptions2.tooltip"
+      [dataLabels]="chartOptions2.dataLabels"
+      [legend]="chartOptions2.legend"
+      [markers]="chartOptions2.markers"
+      [grid]="chartOptions2.grid"
+      [title]="chartOptions2.title"
+    ></apx-chart>
+    </div>
 
   </div>
 
@@ -50,4 +74,7 @@
 </div>
 <team-roles class = "team-roles" *ngIf="team" ></team-roles>
 <team-roles2 *ngIf = "team" id = "team-roles2" ></team-roles2>
+
+  <app-loader *ngIf="isLoading"></app-loader>
+
 </div>

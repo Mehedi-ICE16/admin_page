@@ -32,10 +32,11 @@
          <td class = "employee-id">{{ data.id }}</td>
          <td><img src="../../../assets/people.png" height="30px" width="30px"> {{ data.name | titlecase}}</td>
          <td>{{ data.email }}</td>
-         <td>
+         <td style="position:relative;">
+          <span nz-icon nzType="caret-down" nzTheme="outline" style="left: 0px; position: absolute; bottom:3.4dvh; font-size: large;"></span>
            <select (change)="onRoleChange($event,i)" [ngClass]="{ 'reviewer': data.role_id === roleName.indexOf('Reviwer')+2,'maker': data.role_id === roleName.indexOf('Maker')+2,'checker': data.role_id === roleName.indexOf('checker')+ 2 }">
              <option *ngFor="let role of roleName; let i = index" [value]="role!" [selected]="data.role_id === i+2">{{ role | titlecase }}</option>
-           </select>
+            </select>
          </td>
        </tr>
      </tbody>

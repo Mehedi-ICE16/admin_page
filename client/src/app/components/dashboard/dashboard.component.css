@@ -22,6 +22,12 @@
     border-radius: 10px;
     padding: 10px;
 }
+.loader {
+    z-index: 999;
+    position: absolute;
+    height: 100dvh;
+    background-color: aqua;
+}
 
 #team-roles2 {
     width: 68dvw;
