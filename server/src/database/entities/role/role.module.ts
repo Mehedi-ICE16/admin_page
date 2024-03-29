@@ -11,26 +11,26 @@ import { EmployeeService } from '../employee/employee.service';
 import { employeeProvider } from '../employee/employee.provider';
 
 @Module({
-    imports: [DatabaseModule,JwtModule.register({ secret: 'my_secret_key', signOptions: { expiresIn: '12h' } })],
+    imports: [DatabaseModule],
     controllers: [RoleController],
     providers: [
       RoleService,
       roleProvider,
-      JwtMiddleware,
-      EmployeeLoginService,
-      employeeLoginProvider,
+      // JwtMiddleware,
+      // EmployeeLoginService,
+      // employeeLoginProvider,
       EmployeeService,
       employeeProvider
     ],
   })
 
-   export class RoleModule implements NestModule {
-    configure(consumer: MiddlewareConsumer) {
-      consumer
-        .apply(JwtMiddleware).forRoutes(RoleController);
-    }
-  }
+  //  export class RoleModule implements NestModule {
+  //   configure(consumer: MiddlewareConsumer) {
+  //     consumer
+  //       .apply(JwtMiddleware).forRoutes(RoleController);
+  //   }
+  // }
 
-  // export class RoleModule {  }
+  export class RoleModule {  }
   // ,JwtModule.register({ secret: 'my_secret_key', signOptions: { expiresIn: '12h' } })
  

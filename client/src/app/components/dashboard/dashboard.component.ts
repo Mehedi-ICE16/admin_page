@@ -1,4 +1,5 @@
 import { Component,ViewChild,ElementRef,OnInit } from '@angular/core';
+import { ApexOptions } from 'apexcharts';
 import {
   ChartComponent,
   ApexAxisChartSeries,
@@ -68,6 +69,7 @@ export class DashboardComponent implements OnInit {
     fill1 !: ApexFill;
     legend1 !: ApexLegend;
     dataLabels1 !: ApexDataLabels;
+    plotOptions1 !: ApexPlotOptions;
 
     series2 !: ApexAxisChartSeries;
     chart2 !: ApexChart;
@@ -79,17 +81,20 @@ export class DashboardComponent implements OnInit {
     grid2 !: ApexGrid;
     legend2 !: ApexLegend;
     title2 !: ApexTitleSubtitle;
+    annotations2 !: any;
 
     title3 !: ApexTitleSubtitle;
     series3 !: ApexNonAxisChartSeries;
     chart3 !: ApexChart;
     responsive3 !: ApexResponsive[];
     plotOptions3 !: ApexPlotOptions;
-    grid3 !: ApexGrid
+    grid3 !: ApexGrid;
+    labels3 !: any;
 
     initializeChartOptions(){
       this.title = {
-        text: "Activity Completion Time"
+        text: "Completion Time",
+        align:"left"
       };
       this.series = [{
         name: "A/C Opening",
@@ -107,17 +112,23 @@ export class DashboardComponent implements OnInit {
   this.chart = {
     type: "bar",
     width: 300,
-    height: 220
+    height: 210
   };
 
+  this.labels1 = ['Successful - 150','Unsuccessful - 7'],
   this.title1 = {
     text: "A/C opening success rate",
-    align: "left"
+    align: "center",
   },
   this.series1 = [150,10],
+  this.plotOptions1 = {
+    pie: {
+      customScale: 1,
+    }
+  }
   this.chart1 = {
     width: 300,
-    height:220,
+    height:500,
     type: "donut"
   },
   this.dataLabels1 = {
@@ -133,7 +144,7 @@ export class DashboardComponent implements OnInit {
   },
   this.responsive1 = [
     {
-      breakpoint: 480,
+      // breakpoint: 480,
       options: {
         chart: {
           width: 200
@@ -159,8 +170,39 @@ export class DashboardComponent implements OnInit {
       data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
     }
   ];
+
+  this.annotations2 = {
+    xaxis: [{
+      x: new Date('23 Nov 2017').getTime(),
+      strokeDashArray: 0,
+      borderColor: '#775DD0',
+      label: {
+        borderColor: '#775DD0',
+        style: {
+          color: '#fff',
+          background: '#775DD0',
+        },
+        text: 'Anno Test',
+      }
+    }, {
+      x: new Date('26 Nov 2017').getTime(),
+      x2: new Date('28 Nov 2017').getTime(),
+      fillColor: '#B3F7CA',
+      opacity: 0.4,
+      label: {
+        borderColor: '#B3F7CA',
+        style: {
+          fontSize: '10px',
+          color: '#fff',
+          background: '#00E396',
+        },
+        offsetY: -10,
+        text: 'X-axis range',
+      }
+    }],
+  };
   this.chart2 = {
-    height: 300,
+    height: 220,
     type: "line"
   };
   this.xaxis2 = {
@@ -185,7 +227,7 @@ export class DashboardComponent implements OnInit {
   this.stroke2 = {
     width: 5,
     curve: "straight",
-    dashArray: [0, 8, 5]
+    // dashArray: [0, 8, 5]
   };
   this.dataLabels2 = {
     enabled: false
@@ -243,6 +285,7 @@ export class DashboardComponent implements OnInit {
             text: "Daily Target Achieved",
             align: "left"
           }
+          this.labels3 = ['A/C opened - 44', 'A/C closed - 55', 'A/C serviced - 41'],
           this.series3 = [44, 55, 41],
           this.chart3 = {
             width: 380,

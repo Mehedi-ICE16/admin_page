@@ -12,11 +12,15 @@ export const databaseProviders = [
     useFactory: async () => {
       const sequelize = new Sequelize({
         dialect: 'postgres',
-        host: 'ep-bitter-frost-28031087.eu-central-1.pg.koyeb.app',
+        host: 'ep-wild-cell-a2u0265d.eu-central-1.pg.koyeb.app',
+        // host: 'localhost',
         port: 5432,
         username: 'koyeb-adm',
-        password: 'sZBmxOp2n3SR',
+        // username: 'postgres',
+        password: '7fWnr6JZyUXe',
+        // password: 'bsc16190',
         database: 'koyebdb',
+        // database: 'admin',
         dialectOptions: {
           ssl: {
             require: true,

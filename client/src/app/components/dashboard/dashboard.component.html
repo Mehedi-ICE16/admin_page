@@ -1,4 +1,4 @@
-<div style="position: relative;">
+<div style="position: relative; background-color: #F6F6F6;">
 <div id = "container">
   <div id = "left-sidebar">
 
@@ -25,12 +25,15 @@
 
         <div id = "success-rate">
           <apx-chart
+          [ngStyle]="{height: '100%', width: '100%', margin: '20px'}"
           [series]="series1"
           [chart]="chart1"
           [fill]="fill1"
           [dataLabels]="dataLabels1"
           [responsive]="responsive1"
           [title] = "title1"
+          [plotOptions]="plotOptions1"
+          [labels]="labels1"
         ></apx-chart>
         </div>
 
@@ -51,6 +54,7 @@
       [legend]="legend2"
       [markers]="markers2"
       [grid]="grid2"
+      [annotations]="annotations2"
       [title]="title2"
     ></apx-chart>
     </div>
@@ -69,6 +73,7 @@
       [grid]="grid3"
       [plotOptions]="plotOptions3"
       [responsive]="responsive3"
+      [labels]="labels3"
     ></apx-chart>
     </div>
     <div><span style="font-weight: bold; font-size: large;">Cards</span><button type="button" id="plus-button">+</button></div>

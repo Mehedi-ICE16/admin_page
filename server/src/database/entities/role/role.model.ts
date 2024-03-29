@@ -12,7 +12,7 @@ export class role extends Model<role> {
         autoIncrement: true,
         primaryKey: true,
         unique: true,
-        allowNull: false,
+        allowNull: true,
     })
     id: number;
 
