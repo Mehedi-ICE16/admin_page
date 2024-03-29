@@ -14,30 +14,30 @@ import {
   ApexLegend,
   ApexTooltip,
   ApexResponsive,
-  ApexFill
+  ApexFill,
+  ApexPlotOptions
 } from "ng-apexcharts";
 
-export type ChartOptions1 = {
-  series: ApexNonAxisChartSeries;
-  chart: ApexChart;
-  responsive: ApexResponsive[];
-  labels: any;
-  fill: ApexFill;
-  legend: ApexLegend;
-  dataLabels: ApexDataLabels;
+export interface ChartOptions1  {
+  // series: ApexNonAxisChartSeries;
+  // chart: ApexChart;
+  // responsive: ApexResponsive[];
+  // labels: any;
+  // fill: ApexFill;
+  // legend: ApexLegend;
+  // dataLabels: ApexDataLabels;
 };
 export interface ChartOptions2  {
-  series: ApexAxisChartSeries;
-  chart: ApexChart;
-  xaxis: ApexXAxis;
-  stroke: ApexStroke;
-  dataLabels: ApexDataLabels;
-  markers: ApexMarkers;
-  tooltip: ApexTooltip;
-  yaxis: ApexYAxis;
-  grid: ApexGrid;
-  legend: ApexLegend;
-  title: ApexTitleSubtitle | undefined;
+  // series: ApexAxisChartSeries;
+  // chart: ApexChart;
+  // xaxis: ApexXAxis;
+  // stroke: ApexStroke;
+  // dataLabels: ApexDataLabels;
+  // markers: ApexMarkers;
+  // tooltip: ApexTooltip;
+  // grid: ApexGrid;
+  // legend: ApexLegend;
+  // title: ApexTitleSubtitle;
 };
 @Component({
   selector: 'app-dashboard',
@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
 
     // @ViewChild("chart") chart: ChartComponent;
     public chartOptions1!: Partial<ChartOptions1>;
-    public chartOptions2!: Partial<ChartOptions2>;
+    public chartOptions2!: ChartOptions2;
 
     ngOnInit(): void {
       this.initializeChartOptions();
@@ -59,6 +59,33 @@ export class DashboardComponent implements OnInit {
     series!:ApexAxisChartSeries;
     chart!:ApexChart;
     title!: ApexTitleSubtitle;
+
+    title1 !: ApexTitleSubtitle;
+    series1 !: ApexNonAxisChartSeries;
+    chart1 !: ApexChart;
+    responsive1 !: ApexResponsive[];
+    labels1 !: any;
+    fill1 !: ApexFill;
+    legend1 !: ApexLegend;
+    dataLabels1 !: ApexDataLabels;
+
+    series2 !: ApexAxisChartSeries;
+    chart2 !: ApexChart;
+    xaxis2 !: ApexXAxis;
+    stroke2 !: ApexStroke;
+    dataLabels2 !: ApexDataLabels;
+    markers2 !: ApexMarkers;
+    tooltip2 !: ApexTooltip;
+    grid2 !: ApexGrid;
+    legend2 !: ApexLegend;
+    title2 !: ApexTitleSubtitle;
+
+    title3 !: ApexTitleSubtitle;
+    series3 !: ApexNonAxisChartSeries;
+    chart3 !: ApexChart;
+    responsive3 !: ApexResponsive[];
+    plotOptions3 !: ApexPlotOptions;
+    grid3 !: ApexGrid
 
     initializeChartOptions(){
       this.title = {
@@ -83,133 +110,170 @@ export class DashboardComponent implements OnInit {
     height: 220
   };
 
-      this.chartOptions1 = {
-        series: [150,1],
+  this.title1 = {
+    text: "A/C opening success rate",
+    align: "left"
+  },
+  this.series1 = [150,10],
+  this.chart1 = {
+    width: 300,
+    height:220,
+    type: "donut"
+  },
+  this.dataLabels1 = {
+    enabled: false
+  },
+  this.fill1 = {
+    type: "gradient"
+  },
+  this.legend1 = {
+    formatter: function(val, opts) {
+      return val + " - " + opts.w.globals.series[opts.seriesIndex];
+    }
+  },
+  this.responsive1 = [
+    {
+      breakpoint: 480,
+      options: {
         chart: {
-          width: 300,
-          height:220,
-          type: "donut"
-        },
-        dataLabels: {
-          enabled: false
-        },
-        fill: {
-          type: "gradient"
+          width: 200
         },
         legend: {
-          formatter: function(val, opts) {
-            return val + " - " + opts.w.globals.series[opts.seriesIndex];
-          }
-        },
-        responsive: [
-          {
-            breakpoint: 480,
-            options: {
-              chart: {
-                width: 200
-              },
-              legend: {
-                position: "bottom"
-              }
-            }
-          }
-        ]
-      };    
-      this.chartOptions2 = {
-        series: [
-          {
-            name: "A/C opening",
-            data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
-          },
-          {
-            name: "A/C closing",
-            data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-          },
-          {
-            name: "A/C servicing",
-            data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
-          }
-        ],
-        chart: {
-          height: 300,
-          type: "line"
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          width: 5,
-          curve: "straight",
-          dashArray: [0, 8, 5]
-        },
-        title: {
-          text: "Error Rate",
-          align: "left"
-        },
-        legend: {
-          tooltipHoverFormatter: function(val, opts) {
-            return (
-              val +
-              " - <strong>" +
-              opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] +
-              "</strong>"
-            );
-          }
-        },
-        markers: {
-          size: 0,
-          hover: {
-            sizeOffset: 6
-          }
-        },
-        xaxis: {
-          labels: {
-            trim: false
-          },
-          categories: [
-            "01 Jan",
-            "02 Jan",
-            "03 Jan",
-            "04 Jan",
-            "05 Jan",
-            "06 Jan",
-            "07 Jan",
-            "08 Jan",
-            "09 Jan",
-            "10 Jan",
-            "11 Jan",
-            "12 Jan"
-          ]
-        },
-        tooltip: {
-          y: [
-            {
-              title: {
-                formatter: function(val) {
-                  return val + " (mins)";
-                }
-              }
-            },
-            {
-              title: {
-                formatter: function(val) {
-                  return val + " per session";
-                }
-              }
-            },
-            {
-              title: {
-                formatter: function(val) {
-                  return val;
-                }
-              }
-            }
-          ]
-        },
-        grid: {
-          borderColor: "#f1f1f1"
+          position: "bottom"
         }
-      };
+      }
+    }
+  ]
+
+  this.series2 = [
+    {
+      name: "A/C opening",
+      data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+    },
+    {
+      name: "A/C closing",
+      data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+    },
+    {
+      name: "A/C servicing",
+      data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+    }
+  ];
+  this.chart2 = {
+    height: 300,
+    type: "line"
+  };
+  this.xaxis2 = {
+    labels: {
+      trim: false
+    },
+    categories: [
+      "01 Jan",
+      "02 Jan",
+      "03 Jan",
+      "04 Jan",
+      "05 Jan",
+      "06 Jan",
+      "07 Jan",
+      "08 Jan",
+      "09 Jan",
+      "10 Jan",
+      "11 Jan",
+      "12 Jan"
+    ]
+  };
+  this.stroke2 = {
+    width: 5,
+    curve: "straight",
+    dashArray: [0, 8, 5]
+  };
+  this.dataLabels2 = {
+    enabled: false
+  };
+  this.markers2 = {
+    size: 0,
+    hover: {
+      sizeOffset: 6
+    }
+  };
+  this.tooltip2 = {
+    y: [
+      {
+        title: {
+          formatter: function(val) {
+            return val + " (mins)";
+          }
+        }
+      },
+      {
+        title: {
+          formatter: function(val) {
+            return val + " per session";
+          }
+        }
+      },
+      {
+        title: {
+          formatter: function(val) {
+            return val;
+          }
+        }
+      }
+    ]
+  };
+ this.grid2 = {
+    borderColor: "#f1f1f1"
+  };
+  this.legend2 =  {
+    tooltipHoverFormatter: function(val, opts) {
+      return (
+        val +
+        " - <strong>" +
+        opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] +
+        "</strong>"
+      );
+    }
+  };
+  this.title2 = {
+    text: "Error Rate",
+    align: "left"
+  };
+
+          this.title3 = {
+            text: "Daily Target Achieved",
+            align: "left"
+          }
+          this.series3 = [44, 55, 41],
+          this.chart3 = {
+            width: 380,
+            type: "donut"
+          },
+          this.plotOptions3 = {
+            pie: {
+              startAngle: -90,
+              endAngle: 90,
+              offsetY: 10
+            }
+          },
+          this.grid3 = {
+            padding: {
+              bottom: -80
+            }
+          },
+          this.responsive3 = [
+            {
+              breakpoint: 480,
+              options: {
+                chart: {
+                  width: 200
+                },
+                legend: {
+                  position: 'bottom'
+                }
+              }
+            }
+          ]
+   
     }
 
  teamClicked(team: boolean) {

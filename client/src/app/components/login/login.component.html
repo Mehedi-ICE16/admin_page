@@ -1,30 +1,32 @@
 
 <div class="container">
-    <!-- <div id="container" >
+    <div id="container" >
         <div id="header">
             <img src="../../assets/logo.png" style="width: 80px; height: 80px;" alt="prime_logo">
             <h1 style="display: inline;font-weight: 700;font-size: xx-large; margin-top: 30px;">Prime Bank</h1>
             <h2>Sign in</h2>
         </div>
-        <div> -->
-            <!-- <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div> 
+             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <div>
-                    <label for="email">Email: </label>
+                    <!-- <label for="email">Email: </label> -->
                     <input type="email" id="email" formControlName="email" placeholder="Email">
                 </div>
                 <div>
-                    <label for="password">Password: </label>
+                    <!-- <label for="password">Password: </label> -->
                     <input type="password" id="password" formControlName="password" placeholder="Password">
                 </div>
                 <div style="margin: 5px">
                     <input type="checkbox" style="margin:3px"> <span style="margin:5px">Remember me</span> <span style="margin-left: 50px">Forgot Password ?</span>
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: center ; margin: 5px;">
-                    <button type="submit" id="signin-btn">Sign In</button>
+                    <button type="submit" [style.background-color]="loginForm.invalid? '#ECF7FF':'#5D8AC4'" id="signin-btn">Sign In</button>
                     <h4>Sign in as Super Admin</h4>
                 </div>
-            </form> -->
-            <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="onSubmit()">
+            </form>
+          </div>
+        </div>     
+            <!-- <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="onSubmit()">
                 <nz-form-item>
                   <nz-form-control nzErrorTip="Please input your valid email!">
                     <nz-input-group nzPrefixIcon="user">
@@ -52,7 +54,5 @@
                 <button nz-button class="login-form-button login-form-margin" [nzType]="'primary'">Log in</button>
                 Or
                 <a>register now!</a>
-              </form>
-        <!-- </div>
-    </div>  -->
+              </form> -->
 </div>

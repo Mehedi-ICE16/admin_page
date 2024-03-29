@@ -23,14 +23,14 @@
 
     <div id = "body">
 
-        <div id = "success-rate"><span style="font-weight: bold; font-size: large;">A/C Opening Success Rate</span>
+        <div id = "success-rate">
           <apx-chart
-          [series]="chartOptions1.series"
-          [chart]="chartOptions1.chart"
-          [labels]="chartOptions1.labels"
-          [fill]="chartOptions1.fill"
-          [dataLabels]="chartOptions1.dataLabels"
-          [responsive]="chartOptions1.responsive"
+          [series]="series1"
+          [chart]="chart1"
+          [fill]="fill1"
+          [dataLabels]="dataLabels1"
+          [responsive]="responsive1"
+          [title] = "title1"
         ></apx-chart>
         </div>
 
@@ -42,16 +42,16 @@
 
     <div id = "error-rate">
       <apx-chart
-      [series]="chartOptions2.series"
-      [chart]="chartOptions2.chart"
-      [xaxis]="chartOptions2.xaxis"
-      [stroke]="chartOptions2.stroke"
-      [tooltip]="chartOptions2.tooltip"
-      [dataLabels]="chartOptions2.dataLabels"
-      [legend]="chartOptions2.legend"
-      [markers]="chartOptions2.markers"
-      [grid]="chartOptions2.grid"
-      [title]="chartOptions2.title"
+      [series]="series2"
+      [chart]="chart2"
+      [xaxis]="xaxis2"
+      [stroke]="stroke2"
+      [tooltip]="tooltip2"
+      [dataLabels]="dataLabels2"
+      [legend]="legend2"
+      [markers]="markers2"
+      [grid]="grid2"
+      [title]="title2"
     ></apx-chart>
     </div>
 
@@ -61,7 +61,16 @@
   <div id="search-container">
     <input type="text" placeholder="Search for anything..." id="search"><i class="fas fa-search"></i>
   </div>
-    <div id = "daily-target"><span style="font-weight: bold; font-size: large;">Daily Target Achieved</span></div>
+    <div id = "daily-target">
+      <apx-chart
+      [title]="title3"
+      [series]="series3"
+      [chart]="chart3"
+      [grid]="grid3"
+      [plotOptions]="plotOptions3"
+      [responsive]="responsive3"
+    ></apx-chart>
+    </div>
     <div><span style="font-weight: bold; font-size: large;">Cards</span><button type="button" id="plus-button">+</button></div>
 
     <div id = "card1"><span style="font-weight: bold; font-size: large;">Total Card Issued</span></div>

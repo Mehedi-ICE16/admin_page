@@ -16,7 +16,7 @@ h2{
     color:#5D8AC4;
     font-weight: 600;
     font-size: x-large;
-    margin-left: 10dvw;
+    margin-left: 8dvw;
     margin-top: 0px;
 }
 
@@ -53,7 +53,7 @@ h2{
     border: 2px solid rgb(112, 112, 178);
 }
 #signin-btn{
-    background-color: #5D8AC4;
+    /* background-color: #5D8AC4; */
     margin-left: 100px;
     padding: 5px;
     border-style: none;
@@ -63,6 +63,7 @@ h2{
     width: 8vw;
     text-align: center;
     height: 6dvh;
+    box-shadow: 1px 1px 1px rgba(248, 246, 246, 0.5);
 }
 
 .login-form {

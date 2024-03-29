@@ -10,53 +10,23 @@ import { LoginApiService } from '../../services/login-api.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent  {
-//   loginForm!: FormGroup;
+  loginForm!: FormGroup;
 
-//   constructor(private fb: FormBuilder,private api:LoginApiService,private router:Router) {  }
+  constructor(private fb: FormBuilder,private api:LoginApiService,private router:Router) {  }
 
-// ngOnInit(): void {
-//   this.loginForm = this.fb.group({
-//     email: new FormControl('', [Validators.required, Validators.email]),
-//     password: new FormControl('', Validators.required)
-//   })
-// }
+ngOnInit(): void {
+  this.loginForm = this.fb.group({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required)
+  })
+}
 
-// onSubmit() {
-//   const { email, password } = this.loginForm.value;
-//   if (email && password)
-//     this.api.login(email!, password!).subscribe({
-//       next: data => {
-//         this.loginForm.reset();
-//         if(data.token){
-//           this.router.navigate(['dashboard']);
-//         }
-//       },
-//       error: err => {
-//         console.error(err);
-//       }
-//     })
-//   }
-
-constructor(private fb: NonNullableFormBuilder,private api:LoginApiService,private router:Router) {}
-
-validateForm: FormGroup<{
-  email: FormControl<string>;
-  password: FormControl<string>;
-  remember: FormControl<boolean>;
-}> = this.fb.group({
-  email: ['', [Validators.required,Validators.email]],
-  password: ['', [Validators.required]],
-  remember: [true]
-});
-
-onSubmit(): void {
-  if (this.validateForm.valid) {
-    console.log('submit', this.validateForm.value);
-  const { email, password } = this.validateForm.value;
+onSubmit() {
+  const { email, password } = this.loginForm.value;
   if (email && password)
     this.api.login(email!, password!).subscribe({
       next: data => {
-        this.validateForm.reset();
+        this.loginForm.reset();
         if(data.token){
           this.router.navigate(['dashboard']);
         }
@@ -65,13 +35,43 @@ onSubmit(): void {
         console.error(err);
       }
     })
-  } else {
-    Object.values(this.validateForm.controls).forEach(control => {
-      if (control.invalid) {
-        control.markAsDirty();
-        control.updateValueAndValidity({ onlySelf: true });
-      }
-    });
   }
-}
+
+// constructor(private fb: NonNullableFormBuilder,private api:LoginApiService,private router:Router) {}
+
+// validateForm: FormGroup<{
+//   email: FormControl<string>;
+//   password: FormControl<string>;
+//   remember: FormControl<boolean>;
+// }> = this.fb.group({
+//   email: ['', [Validators.required,Validators.email]],
+//   password: ['', [Validators.required]],
+//   remember: [true]
+// });
+
+// onSubmit(): void {
+//   if (this.validateForm.valid) {
+//     console.log('submit', this.validateForm.value);
+//   const { email, password } = this.validateForm.value;
+//   if (email && password)
+//     this.api.login(email!, password!).subscribe({
+//       next: data => {
+//         this.validateForm.reset();
+//         if(data.token){
+//           this.router.navigate(['dashboard']);
+//         }
+//       },
+//       error: err => {
+//         console.error(err);
+//       }
+//     })
+//   } else {
+//     Object.values(this.validateForm.controls).forEach(control => {
+//       if (control.invalid) {
+//         control.markAsDirty();
+//         control.updateValueAndValidity({ onlySelf: true });
+//       }
+//     });
+//   }
+// }
 }
