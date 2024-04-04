@@ -31,6 +31,12 @@ export class Team extends Model<Team> {
     })
     description: string;
 
+    @Column({
+        type: DataTypes.STRING,
+        allowNull: false,
+    })
+    required_pdf: string[];
+
     @ForeignKey(() => Department)
     @Column({
         allowNull: false

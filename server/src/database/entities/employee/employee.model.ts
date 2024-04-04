@@ -30,27 +30,22 @@ export class Employee extends Model<Employee> {
     type: DataTypes.STRING,
     allowNull: false,
   })
-  first_name: string;
+  name: string;
+
   @Column({
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: false,
   })
-  middle_name: string;
-  @Column({
-    type: DataTypes.STRING,
-    allowNull: false,
-  })
-  last_name: string;
-  @Column({
-    type: DataTypes.STRING,
-    allowNull: false,
-  })
-  age: string;
+  age: number;
 
   @Column({
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
+    validate:{
+      isEmail: true,
+      msg: "Please enter a valid email address"
+    }
   })
   email: string;
 
@@ -68,16 +63,16 @@ export class Employee extends Model<Employee> {
   active: boolean;
 
   @Column({
-    type: DataTypes.BOOLEAN,
+    type: DataTypes.STRING,
     allowNull: false,
   })
-  admin: boolean;
+  admin: string;
 
   @ForeignKey(() => Role)
- @Column({
-  allowNull: false,
+  @Column({
+  allowNull: true,
  })
-role_id: number;
+ role_id: number;
 
   @BelongsTo(() => Role)
   role: Role;

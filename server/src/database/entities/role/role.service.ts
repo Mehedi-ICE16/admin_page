@@ -15,9 +15,9 @@ export class RoleService {
   async findAllRole(): Promise<any[]> {
     return this.roleRepository.findAll<any>();
   }
-  async findAllRoleByTeamId(id: number): Promise<Role[]> {
-     return this.roleRepository.findAll<Role>({ where: { team_id: id },attributes: ['id', 'name'] });
-  }
+  // async findAllRoleByTeamId(id: number): Promise<Role[]> {
+  //    return this.roleRepository.findAll<Role>({ where: { team_id: id },attributes: ['id', 'name'] });
+  // }
 
   async updateRole(id: string, updateData: Partial<any>): Promise<void> {
     await this.roleRepository.update(updateData, { where: { id } });

@@ -18,15 +18,15 @@ export class RoleController {
   }
   @Get('/team/:id')
   async findAllRoleByTeamId(@Param('id') id: number) {
-    const roles = this.roleService.findAllRoleByTeamId(id);
-    let employees: Employee[] = [];
+    // const roles = this.roleService.findAllRoleByTeamId(id);
+    // let employees: Employee[] = [];
 
-    const roleId: number[] = (await roles).map(role => role.id);
-    const roleName: string[] = (await roles).map(role => role.name);
+    // const roleId: number[] = (await roles).map(role => role.id);
+    // const roleName: string[] = (await roles).map(role => role.name);
 
-    employees = await this.employeeService.findAllEmployeeByRoleId(roleId);
+    // employees = await this.employeeService.findAllEmployeeByRoleId(roleId);
 
-    return { roleId,roleName, employees };
+    // return { roleId,roleName, employees };
   }
 
   @Put('/:id')

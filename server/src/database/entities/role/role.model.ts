@@ -31,11 +31,12 @@ export class Role extends Model<Role> {
     })
     description: string;
 
-    @ForeignKey(() => Team)
-    @Column({
-        allowNull: false
-    })
-    team_id: number;
+
+    // @ForeignKey(() => Team)
+    // @Column({
+    //     allowNull: false
+    // })
+    // team_id: number;
   
     // @BelongsTo(() => Team)
     // team: Team;

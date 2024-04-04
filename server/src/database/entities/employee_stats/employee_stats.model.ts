@@ -18,25 +18,15 @@ export class EmployeeStats extends Model<EmployeeStats> {
     id: number;
 
     @Column({
-        allowNull: false,
-    })
-    workflow_id: number;
-
-    @Column({
-        allowNull: false,
-    })
-    role_id: number;
-
-    @Column({
         type: DataTypes.DATE,
         allowNull: false,
     })
-    start_timestamp: Date;
+    total_estimated_time: Date;
 
     @Column({
         type: DataTypes.DATE,
     })
-    end_timestamp: Date;
+    toal_required_time: Date;
 
     @Column({
         type: DataTypes.DATE
@@ -47,6 +37,16 @@ export class EmployeeStats extends Model<EmployeeStats> {
         allowNull: true,
     })
     error_count: number;
+        
+    @Column({
+        allowNull: false,
+    })
+    role_id: number;
+
+    @Column({
+        allowNull: false,
+    })
+    team_id: number;
 
     @ForeignKey(() => Employee)
     @Column({
