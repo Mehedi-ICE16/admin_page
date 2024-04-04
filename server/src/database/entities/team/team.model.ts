@@ -32,8 +32,8 @@ export class Team extends Model<Team> {
     description: string;
 
     @Column({
-        type: DataTypes.STRING,
-        allowNull: false,
+        type: DataTypes.ARRAY(DataTypes.STRING),
+        allowNull: true,
     })
     required_pdf: string[];
 
@@ -47,7 +47,7 @@ export class Team extends Model<Team> {
     department: Department;
 
     @BelongsToMany(() => Role, () => TeamRole)
-    roles: Role[];
+    roles: Array<Role & {TeamRole: TeamRole}>;
     // @BelongsToMany(() => Role, { through: 'TeamRole' })
     // roles: Role[];
   

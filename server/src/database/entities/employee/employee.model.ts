@@ -43,8 +43,7 @@ export class Employee extends Model<Employee> {
     allowNull: false,
     unique: true,
     validate:{
-      isEmail: true,
-      msg: "Please enter a valid email address"
+      isEmail: true
     }
   })
   email: string;
@@ -64,9 +63,14 @@ export class Employee extends Model<Employee> {
 
   @Column({
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   })
   admin: string;
+  @Column({
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  })
+  team_id: number;
 
   @ForeignKey(() => Role)
   @Column({

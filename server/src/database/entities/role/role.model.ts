@@ -42,7 +42,7 @@ export class Role extends Model<Role> {
     // team: Team;
 
     @BelongsToMany(() => Team, () => TeamRole)
-    teams: Team[];
+    teams: Array<Team & {TeamRole: TeamRole}>;
   
     @HasMany(() => Employee)
     employees: Employee[];

@@ -29,7 +29,7 @@ interface ColumnItem {
   styleUrl: './roles.component.css'
 })
 export class RolesComponent implements OnInit{
-
+  listOfData: DataItem[] = [  ];
   selectedTeam: string = 'Team 1';
   teamEmployee: [] = [];
   roleName: string[] = [];
@@ -42,12 +42,7 @@ export class RolesComponent implements OnInit{
 
   ngOnInit(): void {
     this.sharedService.data$.subscribe(data => {
-      console.log("team&roles2: " + data.roleName );
-      this.roleName = data.data.roleName;
-      this.teamEmployee = this.listOfData = data.data.employees;
-      console.log(data.employees);
-      console.log(data.data.roleName[data.data.roleId.indexOf(data.data.employees[0].role_id)]);
-      this.roleId = data.data.roleId;
+      this.teamEmployee = this.listOfData = data.employees;
       this.selectedTeam = data.name;
     });
   }
@@ -112,6 +107,5 @@ export class RolesComponent implements OnInit{
       sortDirections: ['ascend', 'descend', null]
     }
   ];
-  listOfData: DataItem[] = [  ];
 
 }

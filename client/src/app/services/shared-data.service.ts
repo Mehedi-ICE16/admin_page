@@ -9,11 +9,10 @@ export class SharedDataService {
   private dataSubject = new BehaviorSubject<any>(null);
   data$ = this.dataSubject.asObservable();
 
-  employeeListOfSelectedTeam: any[] = [];
   constructor() { }
 
-  sendData(data: any,name: string) {
-    const teamEmployee:{} = {data,name};
+  sendData(employees: any,name: string) {
+    const teamEmployee:{} = {employees,name};
     this.dataSubject.next(teamEmployee);
   }
 

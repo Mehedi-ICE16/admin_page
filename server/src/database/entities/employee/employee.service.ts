@@ -20,8 +20,10 @@ export class EmployeeService {
     return this.employeeRepository.findOne<Employee>( { where: {email} } );
   }
 
-  async findAllEmployeeByRoleId(id: number[]): Promise<Employee[]> {
-    return this.employeeRepository.findAll<Employee>({ where: { role_id: id } });
+  async findAllEmployeeByTeamId(id: number): Promise<any[]> {
+    const employees = await this.employeeRepository.findAll<any>({ where: {team_id: id, active:true },attributes: ['id', 'name','email','role_id'], });
+    console.log(employees.map((employee) => employee));
+    return employees;
   }
 
   async updateEmployeeInfo(id: string, updateData: Partial<any>): Promise<void> {

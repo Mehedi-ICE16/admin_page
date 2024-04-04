@@ -9,12 +9,16 @@ import { EmployeeLoginService } from '../employee_login/employee_login.service';
 import { employeeLoginProvider } from '../employee_login/employee_login.provider';
 import { EmployeeService } from '../employee/employee.service';
 import { employeeProvider } from '../employee/employee.provider';
+import { TeamRoleService } from '../team_role/team_role.service';
+import { teamRoleProvider } from '../team_role/team_role.provider';
 
 @Module({
     imports: [DatabaseModule],
     controllers: [RoleController],
     providers: [
       RoleService,
+      teamRoleProvider,
+      TeamRoleService,
       roleProvider,
       // JwtMiddleware,
       // EmployeeLoginService,

@@ -15,6 +15,11 @@ export class EmployeeController {
     return this.employeeService.findAllEmployee();
   }
 
+  @Get('/:id')
+  async findAllEmployeeByTeamId(@Param('id') team_id: number) {
+    return this.employeeService.findAllEmployeeByTeamId(team_id);
+  }
+
   @Put('/:id')
   async updateEmployeeInfo( @Param('id') id: string, @Body() updateData: Partial<any>, ): Promise<void> {
     await this.employeeService.updateEmployeeInfo(id, updateData);
