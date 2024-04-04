@@ -1,6 +1,6 @@
 import { Controller, Post, Get, Put, Delete, Body,Param } from '@nestjs/common';
 import { RoleService } from './role.service';
-import { employee } from '../employee/employee.model';
+import { Employee } from '../employee/employee.model';
 import { EmployeeService } from '../employee/employee.service';
 
 @Controller('/role')
@@ -19,7 +19,7 @@ export class RoleController {
   @Get('/team/:id')
   async findAllRoleByTeamId(@Param('id') id: number) {
     const roles = this.roleService.findAllRoleByTeamId(id);
-    let employees: employee[] = [];
+    let employees: Employee[] = [];
 
     const roleId: number[] = (await roles).map(role => role.id);
     const roleName: string[] = (await roles).map(role => role.name);

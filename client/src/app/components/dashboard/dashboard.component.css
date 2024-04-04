@@ -10,18 +10,7 @@
     z-index: 1;
 }
 
-.team-roles {
-    display: flex;
-    flex-direction: column;
-    width: 25dvw;
-    height: 100dvh;
-    z-index: 2;
-    position: absolute;
-    left: 9dvw;
-    background-color: #ffffff;
-    /* border-radius: 10px; */
-    padding: 10px;
-}
+
 .loader {
     z-index: 999;
     position: absolute;
@@ -29,16 +18,6 @@
     background-color: aqua;
 }
 
-#team-roles2 {
-    width: 65dvw;
-    height: 100dvh;
-    z-index: 2;
-    position: absolute;
-    left: 33dvw;
-    background-color: #F6F6F6;
-    /* border-radius: 10px; */
-    padding: 10px;
-}
 
 .dashboard-disble-blur {
     background-color: #FFFFFF;
@@ -46,19 +25,7 @@
     pointer-events: none;
 }
 
-#left-sidebar{
-    width: 7dvw; 
-    height: 100dvh; 
-    background-color: #FFFDFD;
-     box-shadow: 1px 1px 1px  rgb(153, 179, 153, 1); 
-    display: flex; 
-    flex-direction: column; 
-    gap: 5px; 
-    align-items: center; 
-    justify-content: center;
-    margin-left: 0%;
 
-}
 
 #logo {
     width:100%;

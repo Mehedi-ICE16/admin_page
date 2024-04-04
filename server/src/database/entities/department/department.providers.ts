@@ -1,7 +1,7 @@
-import { department } from './department.model';
+import { Department } from './department.model';
 
 export const departmentProvider = 
   {
     provide: 'DEPARTMENT_REPOSITORY',
-    useValue: department,
+    useValue: Department,
   }

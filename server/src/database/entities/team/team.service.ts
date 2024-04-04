@@ -1,17 +1,17 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { team } from './team.model';
-import { role } from '../role/role.model';
-import { employee } from '../employee/employee.model';
+import { Team } from './team.model';
+import { Role } from '../role/role.model';
+import { Employee } from '../employee/employee.model';
 
 @Injectable()
 export class TeamService {
   constructor(
     @Inject('TEAM_REPOSITORY')
-    private teamRepository: typeof team,
+    private teamRepository: typeof Team,
   ) {}
 
-  async create(createTeamDto: any): Promise<team> {
-    return this.teamRepository.create<team>(createTeamDto);
+  async create(createTeamDto: any): Promise<Team> {
+    return this.teamRepository.create<Team>(createTeamDto);
   }
 
   async findAllTeam(): Promise<any[]> {
@@ -26,13 +26,13 @@ export class TeamService {
     await this.teamRepository.destroy({ where: { id } });
   }
 
-  async findOneById(id: number): Promise<team | null>{
+  async findOneById(id: number): Promise<Team | null>{
     console.log("Service id: "+id);
-    return this.teamRepository.findOne<team>({ where:{ id } });
+    return this.teamRepository.findOne<Team>({ where:{ id } });
   }
 
-  // async findEmployeeByTeamId(id: number): Promise<employee[]>{
-  //   const x = this.teamRepository.findAll<employee>({ where:{ id }, include: [ { model: role, include:  [{ model: employee }] } ] });
+  // async findEmployeeByTeamId(id: number): Promise<Employee[]>{
+  //   const x = this.teamRepository.findAll<Employee>({ where:{ id }, include: [ { model: Role, include:  [{ model: Employee }] } ] });
   //   return x.roles.flatMap((role) => role.employees)
   // }
 

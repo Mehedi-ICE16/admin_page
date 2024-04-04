@@ -20,7 +20,6 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { TeamRolesComponent } from './components/team-roles/team-roles.component';
-import { TeamRoles2Component } from './components/team-roles2/team-roles2.component';
 import { NzTableModule } from 'ng-zorro-antd/table';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NzIconModule } from 'ng-zorro-antd/icon';
@@ -29,6 +28,8 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { LoaderComponent } from './components/loader/loader.component';
 import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { TeamsComponent } from './components/teams/teams.component';
+import { RolesComponent } from './components/roles/roles.component';
 // import { NgZorroAntdModule } from 'ng-zorro-antd';
 registerLocaleData(en);
 
@@ -38,9 +39,10 @@ registerLocaleData(en);
     LoginComponent,
     DashboardComponent,
     TeamRolesComponent,
-    TeamRoles2Component,
     SidebarComponent,
-    LoaderComponent
+    LoaderComponent,
+    TeamsComponent,
+    RolesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,13 +1,14 @@
 import { Column, Model, Table, ForeignKey, BelongsTo } from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
-import { employee } from '../employee/employee.model';
+import { Employee } from '../employee/employee.model';
 
 @Table ({
     timestamps: false, // Disable timestamps
+    tableName: 'employee_stats',
     freezeTableName: true, // Prevent table name changes
 })
 
-export class employee_stats extends Model<employee_stats> {
+export class EmployeeStats extends Model<EmployeeStats> {
     @Column({
         autoIncrement: true,
         primaryKey: true,
@@ -47,12 +48,12 @@ export class employee_stats extends Model<employee_stats> {
     })
     error_count: number;
 
-    @ForeignKey(() => employee)
+    @ForeignKey(() => Employee)
     @Column({
         allowNull: false
     })
     employee_id: number;
   
-    @BelongsTo(() => employee)
-    employee: employee;
+    @BelongsTo(() => Employee)
+    employee: Employee;
 }

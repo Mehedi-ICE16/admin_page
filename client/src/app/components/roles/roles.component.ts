@@ -1,4 +1,6 @@
+import { Component,OnInit } from '@angular/core';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
+import { SharedDataService } from '../../services/shared-data.service';
 
 interface DataItem {
   id: number;
@@ -21,15 +23,12 @@ interface ColumnItem {
   sortDirections: NzTableSortOrder[];
 }
 
-import { Component,OnInit } from '@angular/core';
-import { SharedDataService } from '../../services/shared-data.service';
-
 @Component({
-  selector: 'team-roles2',
-  templateUrl: './team-roles2.component.html',
-  styleUrl: './team-roles2.component.css'
+  selector: 'app-roles',
+  templateUrl: './roles.component.html',
+  styleUrl: './roles.component.css'
 })
-export class TeamRoles2Component implements OnInit{
+export class RolesComponent implements OnInit{
 
   selectedTeam: string = 'Team 1';
   teamEmployee: [] = [];
@@ -114,4 +113,5 @@ export class TeamRoles2Component implements OnInit{
     }
   ];
   listOfData: DataItem[] = [  ];
+
 }

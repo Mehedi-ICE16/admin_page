@@ -1,13 +1,14 @@
 import { Table, Column, Model,HasMany } from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
-import { team } from '../team/team.model';
+import { Team } from '../team/team.model';
 import { IDepartment } from '../../interfaces/department.interface';
 
 @Table ({
     timestamps: false, // Disable timestamps
+    tableName: 'department',
     freezeTableName: true, // Prevent table name changes
 })
-export class department extends Model<IDepartment> {
+export class Department extends Model<IDepartment> {
     @Column({
         autoIncrement: true,
         primaryKey: true,
@@ -27,6 +28,6 @@ export class department extends Model<IDepartment> {
         allowNull: false,
     })
     description: string;
-    @HasMany(() => team)
-    teams: team[];
+    @HasMany(() => Team)
+    teams: Team[];
 }

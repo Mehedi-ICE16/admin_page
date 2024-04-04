@@ -322,11 +322,10 @@ export class DashboardComponent implements OnInit {
  teamClicked(team: boolean) {
    this.team = !team;
    this.isLoading = true;
-   // Perform some time-consuming operation
    setTimeout(() => {
      this.isLoading = false;
    }, 2500);
-    }
+  }
   
     constructor() { }
 }

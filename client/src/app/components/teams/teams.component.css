@@ -1,0 +1,19 @@
+.team-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.team-container div {
+    background-color:  #34639F;
+    width: 15dvw;
+    border-radius: 5px;
+    height: 7dvh;
+    padding: 10px;
+    color: #f2eaea;
+    font-size: small;
+    font-weight: 400;
+    text-align: center;
+}

@@ -1,22 +1,22 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { role } from './role.model';
+import { Role } from './role.model';
 
 @Injectable()
 export class RoleService {
   constructor(
     @Inject('ROLE_REPOSITORY')
-    private roleRepository: typeof role,
+    private roleRepository: typeof Role,
   ) {}
 
-  async createRole(createRoleDto: any): Promise<role> {
-    return this.roleRepository.create<role>(createRoleDto);
+  async createRole(createRoleDto: any): Promise<Role> {
+    return this.roleRepository.create<Role>(createRoleDto);
   }
 
   async findAllRole(): Promise<any[]> {
     return this.roleRepository.findAll<any>();
   }
-  async findAllRoleByTeamId(id: number): Promise<role[]> {
-     return this.roleRepository.findAll<role>({ where: { team_id: id },attributes: ['id', 'name'] });
+  async findAllRoleByTeamId(id: number): Promise<Role[]> {
+     return this.roleRepository.findAll<Role>({ where: { team_id: id },attributes: ['id', 'name'] });
   }
 
   async updateRole(id: string, updateData: Partial<any>): Promise<void> {

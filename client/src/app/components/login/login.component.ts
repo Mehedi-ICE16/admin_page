@@ -23,6 +23,8 @@ ngOnInit(): void {
 
 onSubmit() {
   const { email, password } = this.loginForm.value;
+  this.router.navigateByUrl('dashboard');
+  console.log(email);
   if (email && password)
     this.api.login(email!, password!).subscribe({
       next: data => {

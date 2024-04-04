@@ -1,24 +1,24 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { employee_login } from './employee_login.model';
-import { employee } from '../employee/employee.model';
+import { EmployeeLogin } from './employee_login.model';
+import { Employee } from '../employee/employee.model';
 
 @Injectable()
 export class EmployeeLoginService {
   constructor(
     @Inject('EMPLOYEE_LOGIN_REPOSITORY')
-    private loginRepository: typeof employee_login,
+    private loginRepository: typeof EmployeeLogin,
   ) {}
 
-  async createEmployee(createEmployeeDto: any): Promise<employee_login> {
-    return this.loginRepository.create<employee_login>(createEmployeeDto);
+  async createEmployee(createEmployeeDto: any): Promise<EmployeeLogin> {
+    return this.loginRepository.create<EmployeeLogin>(createEmployeeDto);
   }  
 
-  async findAllEmployee(): Promise<employee_login[]> {
-    return this.loginRepository.findAll<employee_login>();
+  async findAllEmployee(): Promise<EmployeeLogin[]> {
+    return this.loginRepository.findAll<EmployeeLogin>();
   }
   
   async findByEmail(email:string): Promise<any> {
-    return this.loginRepository.findOne<employee_login>( { where: {email}, include: [{model:employee}] } );
+    return this.loginRepository.findOne<EmployeeLogin>( { where: {email}, include: [{model:Employee}] } );
   }
 
   async updateEmployeeInfo(id: string, updateData: Partial<any>): Promise<void> {

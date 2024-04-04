@@ -1,6 +1,4 @@
-<div class="team-container">
-    <h2>Teams and Roles</h2>
-    <div *ngFor="let team of teams; let i = index" (click)="teamClicked(i)">
-        {{team.name}}
-    </div>
+<div style="display:flex; gap: 2dvw; margin-left: 5dvw">
+    <app-teams></app-teams>
+    <app-roles></app-roles>
 </div>

@@ -1,4 +1,5 @@
 import { Component,Output,EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,18 +8,18 @@ import { Component,Output,EventEmitter } from '@angular/core';
 })
 export class SidebarComponent {
 
-  isCollapsed = false;
   team: boolean = false;
+
+  constructor(private router: Router) { }
 
   @Output() dataEvent = new EventEmitter<boolean>();
 
 
-  toggleCollapsed(): void {
-    this.isCollapsed = !this.isCollapsed;
+  teamClicked(){
+    this.router.navigateByUrl('teamroles');
   }
 
-  teamClicked(){
-    this.dataEvent.emit(this.team);
-    this.team = !this.team;
+  dashboardClicked(){
+    this.router.navigateByUrl('dashboard');
   }
 }

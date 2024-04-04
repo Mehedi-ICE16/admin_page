@@ -1,10 +1,11 @@
 import { Sequelize } from 'sequelize-typescript';
-import { department } from './entities/department/department.model';
-import { team } from './entities/team/team.model';
-import { role } from './entities/role/role.model';
-import { employee } from './entities/employee/employee.model';
-import { employee_login } from './entities/employee_login/employee_login.model';
-import { employee_stats } from './entities/employee_stats/employee_stats.model';
+import { Department } from './entities/department/department.model';
+import { Team } from './entities/team/team.model';
+import { Role } from './entities/role/role.model';
+import { Employee } from './entities/employee/employee.model';
+import { EmployeeLogin } from './entities/employee_login/employee_login.model';
+import { EmployeeStats } from './entities/employee_stats/employee_stats.model';
+import { TeamRole } from './entities/team_role/team_role.model';
 
 export const databaseProviders = [
   {
@@ -29,12 +30,13 @@ export const databaseProviders = [
         },
       });
       sequelize.addModels([
-        department,
-        team,
-        role,
-        employee,
-        employee_login,
-        employee_stats,
+        Department,
+        Team,
+        Role,
+        Employee,
+        EmployeeLogin,
+        EmployeeStats,
+        TeamRole
       ]);
       await sequelize.sync();
       return sequelize;

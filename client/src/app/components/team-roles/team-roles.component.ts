@@ -1,47 +1,23 @@
 import { Component,OnInit } from '@angular/core';
-import { TeamApiService } from '../../services/team-api.service';
-import { ITeam } from '../../interfaces/team.interface';
-import { LoginApiService } from '../../services/login-api.service';
-import { SharedDataService } from '../../services/shared-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'team-roles',
   templateUrl: './team-roles.component.html',
   styleUrl: './team-roles.component.css'
 })
-export class TeamRolesComponent implements OnInit {
+export class TeamRolesComponent  {
 
-  teams: ITeam[] = [];
-  employee:any[] = [];
-  teamName: string = '';
+  isLoading!: boolean;
+  constructor( public router: Router) { }
 
-  constructor(private teamApi: TeamApiService, private employeeApi: LoginApiService, private sharedService: SharedDataService) { }
+  teamClicked(team: boolean) {
 
-  ngOnInit(): void {
-    this.teamApi.getAllTeam().subscribe({
-      next: data => {
-        console.log(data);
-        this.teams = data;
-        this.teamName = this.teams[0].name;
-        this.employeeApi.getAllEmployee(this.teams[0].id).subscribe(data => {
-          this.employee = data;
-          this.sharedService.sendData(this.employee,this.teamName);
-          console.log(data);
-        })
-      },
-      error: err => {
-        console.error(err);
-      }
-    })
+    this.isLoading = true;
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 2500);
+   }
+
   }
 
-  teamClicked(i: number) {
-    this.teamName = this.teams[i].name;
-     this.employeeApi.getAllEmployee(this.teams[i].id).subscribe(data => {
-      this.employee = data;
-      this.sharedService.sendData(this.employee,this.teamName);
-      console.log(data);
-    })
-  }
-
-}

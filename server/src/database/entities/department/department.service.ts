@@ -1,19 +1,19 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { department } from './department.model';
+import { Department } from './department.model';
 import { IDepartment } from '../../interfaces/department.interface';
 
 @Injectable()
 export class DepartmentService {
   constructor(
     @Inject('DEPARTMENT_REPOSITORY')
-    private departmentRepository: typeof department,
+    private departmentRepository: typeof Department,
   ) {}
 
-  async create(createDepartmentDto: IDepartment): Promise<department> {
-    return this.departmentRepository.create<department>(createDepartmentDto);
+  async create(createDepartmentDto: IDepartment): Promise<Department> {
+    return this.departmentRepository.create<Department>(createDepartmentDto);
   }
-  async findAll(): Promise<department[]> {
-    return this.departmentRepository.findAll<department>();
+  async findAll(): Promise<Department[]> {
+    return this.departmentRepository.findAll<Department>();
   }
 
   async deleteDepartment(id: string): Promise<void> {

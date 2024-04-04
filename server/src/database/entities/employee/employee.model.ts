@@ -8,15 +8,16 @@ import {
   HasMany,
 } from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
-import { role } from '../role/role.model';
-import { employee_login } from '../employee_login/employee_login.model';
-import { employee_stats } from '../employee_stats/employee_stats.model';
+import { Role } from '../role/role.model';
+import { EmployeeLogin } from '../employee_login/employee_login.model';
+import { EmployeeStats } from '../employee_stats/employee_stats.model';
 
 @Table({
   timestamps: false, // Disable timestamps
+  tableName: 'employee',
   freezeTableName: true, // Prevent table name changes
 })
-export class employee extends Model<employee> {
+export class Employee extends Model<Employee> {
   @Column({
     autoIncrement: true,
     primaryKey: true,
@@ -29,7 +30,22 @@ export class employee extends Model<employee> {
     type: DataTypes.STRING,
     allowNull: false,
   })
-  name: string;
+  first_name: string;
+  @Column({
+    type: DataTypes.STRING,
+    allowNull: false,
+  })
+  middle_name: string;
+  @Column({
+    type: DataTypes.STRING,
+    allowNull: false,
+  })
+  last_name: string;
+  @Column({
+    type: DataTypes.STRING,
+    allowNull: false,
+  })
+  age: string;
 
   @Column({
     type: DataTypes.STRING,
@@ -57,18 +73,18 @@ export class employee extends Model<employee> {
   })
   admin: boolean;
 
-  @ForeignKey(() => role)
+  @ForeignKey(() => Role)
  @Column({
   allowNull: false,
  })
 role_id: number;
 
-  @BelongsTo(() => role)
-  role: role;
+  @BelongsTo(() => Role)
+  role: Role;
 
-  @HasOne(() => employee_login)
-  login: employee_login;
+  @HasOne(() => EmployeeLogin)
+  login: EmployeeLogin;
 
-  @HasMany(() => employee_stats)
-  statusLogs: employee_stats[];
+  @HasMany(() => EmployeeStats)
+  statusLogs: EmployeeStats[];
 }

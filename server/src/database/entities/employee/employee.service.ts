@@ -1,15 +1,15 @@
 import { Injectable, Inject } from '@nestjs/common';
-import { employee } from './employee.model';
+import { Employee } from './employee.model';
 
 @Injectable()
 export class EmployeeService {
   constructor(
     @Inject('EMPLOYEE_REPOSITORY')
-    private employeeRepository: typeof employee
+    private employeeRepository: typeof Employee
   ) {}
 
-  async createEmployee(createEmployeeDto: any): Promise<employee> {
-    return this.employeeRepository.create<employee>(createEmployeeDto);
+  async createEmployee(createEmployeeDto: any): Promise<Employee> {
+    return this.employeeRepository.create<Employee>(createEmployeeDto);
   }  
 
   async findAllEmployee(): Promise<any[]> {
@@ -17,11 +17,11 @@ export class EmployeeService {
   }
 
   async findByEmail(email:string): Promise<any> {
-    return this.employeeRepository.findOne<employee>( { where: {email} } );
+    return this.employeeRepository.findOne<Employee>( { where: {email} } );
   }
 
-  async findAllEmployeeByRoleId(id: number[]): Promise<employee[]> {
-    return this.employeeRepository.findAll<employee>({ where: { role_id: id } });
+  async findAllEmployeeByRoleId(id: number[]): Promise<Employee[]> {
+    return this.employeeRepository.findAll<Employee>({ where: { role_id: id } });
   }
 
   async updateEmployeeInfo(id: string, updateData: Partial<any>): Promise<void> {

@@ -1,7 +1,7 @@
-import { team } from './team.model';
+import { Team } from './team.model';
 
 export const teamProvider = 
 {
   provide: 'TEAM_REPOSITORY',
-  useValue: team,
+  useValue: Team,
 }

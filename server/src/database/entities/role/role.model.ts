@@ -1,14 +1,17 @@
-import { Column, Model, Table, ForeignKey, BelongsTo, HasMany } from 'sequelize-typescript';
+import { Column, Model, Table, ForeignKey, BelongsTo, HasMany , BelongsToMany} from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
-import { team } from '../team/team.model';
-import { employee } from '../employee/employee.model';
+import { Team } from '../team/team.model';
+import { Employee } from '../employee/employee.model';
+import { TeamRole } from '../team_role/team_role.model';
 
 @Table ({
     timestamps: false, // Disable timestamps
+    tableName: 'role',
     freezeTableName: true, // Prevent table name changes
 })
-export class role extends Model<role> {
+export class Role extends Model<Role> {
     @Column({
+        type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true,
         unique: true,
@@ -27,15 +30,19 @@ export class role extends Model<role> {
         allowNull: false,
     })
     description: string;
-    @ForeignKey(() => team)
+
+    @ForeignKey(() => Team)
     @Column({
         allowNull: false
     })
     team_id: number;
   
-    @BelongsTo(() => team)
-    team: team;
+    // @BelongsTo(() => Team)
+    // team: Team;
+
+    @BelongsToMany(() => Team, () => TeamRole)
+    teams: Team[];
   
-    @HasMany(() => employee)
-    employees: employee[];
+    @HasMany(() => Employee)
+    employees: Employee[];
 }   
