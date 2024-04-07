@@ -1,4 +1,4 @@
-import { Component,EventEmitter,OnInit, Output } from '@angular/core';
+import { Component,EventEmitter,OnInit, Output,Input } from '@angular/core';
 import { TeamApiService } from '../../services/team-api.service';
 import { ITeam } from '../../interfaces/team.interface';
 import { EmployeeService } from '../../services/employee.service';
@@ -14,6 +14,7 @@ export class TeamsComponent {
   employee:any[] = [];
   roles:any[] = [];
   teamName: string = '';
+  // @Input() newTeamAdded: boolean = false;
 
   @Output() addTeamEvent = new EventEmitter<boolean>();
   @Output() addLoader = new EventEmitter<boolean>();
@@ -22,25 +23,28 @@ export class TeamsComponent {
 
   ngOnInit(): void {
     this.addLoader.emit();
+
     this.teamApi.getAllTeam().subscribe({
       next: data => {
-        console.log(data);
         this.teams = data;
+        console.log(this.teams);
         this.teamName = this.teams[0].name;
         this.employeeApi.getAllEmployee(this.teams[0].id).subscribe(data => {
           const { roles,employees } = data;
-          console.log(data);
           this.employee = employees;
           this.roles = roles;
           this.sharedService.sendData(this.employee,this.roles,this.teamName);
-          // console.log("Team "+ data+" "+this.teamName);
-          console.log(this.employee);
         })
       },
       error: err => {
         console.error(err);
       }
     })
+  }
+
+  showTeams(newTeam: any) {
+    this.teams.push(newTeam);
+    // console.log(this.teams);
   }
 
   teamClicked(i: number) {

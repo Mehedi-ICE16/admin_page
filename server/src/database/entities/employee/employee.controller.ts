@@ -25,8 +25,10 @@ export class EmployeeController {
   }
 
   @Put('/:id')
-  async updateEmployeeInfo( @Param('id') id: string, @Body() updateData: Partial<any>, ): Promise<void> {
-    await this.employeeService.updateEmployeeInfo(id, updateData);
+  async updateEmployeeInfo( @Param('id') id: string, @Body() updateData: Partial<any>, ): Promise<any> {
+    const updatedData = await this.employeeService.updateEmployeeInfo(id, updateData);
+    console.log(updatedData);
+    return updatedData;
   }
 
   @Delete('/:id')

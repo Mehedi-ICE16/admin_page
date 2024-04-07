@@ -19,6 +19,11 @@ export class SidebarComponent {
     this.router.navigateByUrl('teamroles');
   }
 
+  logout(){
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('login');
+  }
+
   dashboardClicked(){
     this.router.navigateByUrl('dashboard');
   }

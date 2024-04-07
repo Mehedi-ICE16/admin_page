@@ -1,5 +1,6 @@
-import { Component,OnInit } from '@angular/core';
+import { Component,OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { TeamsComponent } from '../teams/teams.component';
 
 @Component({
   selector: 'team-roles',
@@ -10,6 +11,9 @@ export class TeamRolesComponent  {
 
   enableAddform: boolean = false;
   isLoading!: boolean;
+
+  @ViewChild(TeamsComponent) teams!: TeamsComponent;
+
   constructor( public router: Router) { }
 
   teamClicked() {
@@ -19,8 +23,14 @@ export class TeamRolesComponent  {
       this.isLoading = false;
     }, 2500);
    }
-   addTeamEvent(enableTeamAdd: boolean){
+   addTeamEvent(enableTeamAdd: boolean) {
     this.enableAddform = enableTeamAdd;
+   }
+
+   hideTeamEvent(enableTeamAdd: any) {
+    const { showForm,res } = enableTeamAdd;
+    this.teams.showTeams(res);
+    this.enableAddform = showForm;
    }
 
   }

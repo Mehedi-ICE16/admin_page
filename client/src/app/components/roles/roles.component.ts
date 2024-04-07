@@ -51,7 +51,7 @@ export class RolesComponent implements OnInit{
       this.roles = data.roles;
       this.roleId = [];
       this.roleName = [];
-      console.log(this.teamEmployee);
+      // console.log(this.teamEmployee);
       this.teamAdmin = this.teamEmployee.find((employee:any) => employee.admin === "TA" || employee.admin === "SA");
       console.log(this.teamAdmin);
       this.roles.forEach((role:any) =>{
@@ -87,8 +87,10 @@ export class RolesComponent implements OnInit{
     this.clickedAdminChange = false;
     const { id,email } = this.teamAdminForm.value;
     if(id){
-      this.employeeApi.updateEmployeeRole(this.teamAdmin.id,{admin:"null"}).subscribe()
-      this.employeeApi.updateEmployeeRole(id,{admin:"TA"}).subscribe()
+      this.employeeApi.updateEmployeeRole(this.teamAdmin.id, { admin : "null" }).subscribe();
+      this.employeeApi.updateEmployeeRole(id,{admin:"TA"}).subscribe( res => {
+        this.teamAdmin = res;
+      } );
     }
     console.log(id,email);
     this.teamAdminForm.reset();

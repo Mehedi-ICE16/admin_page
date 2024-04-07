@@ -26,8 +26,9 @@ export class EmployeeService {
     return employees;
   }
 
-  async updateEmployeeInfo(id: string, updateData: Partial<any>): Promise<void> {
+  async updateEmployeeInfo(id: string, updateData: Partial<any>): Promise<any> {
     await this.employeeRepository.update(updateData, { where: { id } });
+    return this.employeeRepository.findByPk(id);
   }
 
   async deleteEmployee(id: string): Promise<void> {

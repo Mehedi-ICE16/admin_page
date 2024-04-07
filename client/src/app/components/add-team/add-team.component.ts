@@ -2,6 +2,7 @@ import { Component,EventEmitter,OnInit, Output } from '@angular/core';
 import { FormGroup,FormBuilder,Validators,FormArray } from '@angular/forms';
 import { DepartmentService } from '../../services/department.service';
 import { TeamApiService } from '../../services/team-api.service';
+import { SharedDataService } from '../../services/shared-data.service';
 
 @Component({
   selector: 'add-team',
@@ -12,8 +13,8 @@ export class AddTeamComponent implements OnInit {
   addNewTeam!: FormGroup;
   departments!: any[];
 
-  @Output() hideAddForm = new EventEmitter<boolean>();
-   constructor(private fb: FormBuilder, private deptService: DepartmentService, private teamApi: TeamApiService) { }
+  @Output() hideAddForm = new EventEmitter<any>();
+   constructor(private fb: FormBuilder, private deptService: DepartmentService, private teamApi: TeamApiService, private sharedData: SharedDataService) { }
 
   ngOnInit(){
 
@@ -46,12 +47,13 @@ export class AddTeamComponent implements OnInit {
     // console.log(this.pdf);
   }
 
-  onAddTeam(){
-    this.hideAddForm.emit(false);
+ onAddTeam(){
     const { teamName , description,selectDepartment } = this.addNewTeam.value;
     const team = {name:teamName,description,dept_id:selectDepartment,required_pdf:this.pdf};
-    console.log(team);
-    this.teamApi.addTeam(team).subscribe(res => console.log(res));
+    // console.log(team);
+
+    this.teamApi.addTeam(team).subscribe(res => this.hideAddForm.emit({showForm: false,res}));
+  
   }
 
   cancelClicked(){
