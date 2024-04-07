@@ -17,3 +17,14 @@
     font-weight: 400;
     text-align: center;
 }
+#add-team-btn{
+    display: flex;
+     justify-content: center;
+      align-items: center;
+  height: 30px;
+  width: 30px;
+   border-radius: 50%; 
+   background-color: rgb(30, 89, 141); 
+   font-weight: 600;
+    font-size: x-large;
+}

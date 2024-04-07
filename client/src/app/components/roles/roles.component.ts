@@ -1,6 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } from 'ng-zorro-antd/table';
 import { SharedDataService } from '../../services/shared-data.service';
+import { EmployeeService } from '../../services/employee.service';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 interface DataItem {
   id: number;
@@ -32,27 +34,67 @@ export class RolesComponent implements OnInit{
   listOfData: DataItem[] = [  ];
   selectedTeam: string = 'Team 1';
   teamEmployee: [] = [];
+  teamAdmin!: any;
+  teamAdminRole!: any;
   roleName: string[] = [];
   roleId: number[] = [];
+  roles: any[] = [];
   selectedRoleClass!: string;
 
-  constructor( private sharedService: SharedDataService) { 
+  constructor( private sharedService: SharedDataService, private employeeApi: EmployeeService, private fb: FormBuilder) {
     this.selectedRoleClass = 'reviewer';
    }
 
   ngOnInit(): void {
     this.sharedService.data$.subscribe(data => {
       this.teamEmployee = this.listOfData = data.employees;
+      this.roles = data.roles;
+      this.roleId = [];
+      this.roleName = [];
+      console.log(this.teamEmployee);
+      this.teamAdmin = this.teamEmployee.find((employee:any) => employee.admin === "TA" || employee.admin === "SA");
+      console.log(this.teamAdmin);
+      this.roles.forEach((role:any) =>{
+        this.roleName.push(role.name);
+        this.roleId.push(role.id);
+        if(role.id === this.teamAdmin.role_id){
+          this.teamAdminRole = role.name;
+        }
+      })
       this.selectedTeam = data.name;
     });
+
+    // add new admin form 
+    this.teamAdminForm = this.fb.group({
+      id: new FormControl('', Validators.required),
+      email: new FormControl('',  Validators.email),
+    })
   }
 
   selectedRole!: string;
 
-  onRoleChange(event: any,i:number) {
+  onRoleChange(event: any, id:number | undefined) {
     this.selectedRole = event.target.value;
-    console.log(this.selectedRole);
+    const role_id = this.roles.find((role:any) => this.selectedRole === role.name).id;
+    console.log(id,role_id);
+    this.employeeApi.updateEmployeeRole(id,{role_id}).subscribe()
   }
+
+  clickedAdminChange: boolean = false;
+  teamAdminForm!: FormGroup;
+
+  changeAdmin(){
+    this.clickedAdminChange = false;
+    const { id,email } = this.teamAdminForm.value;
+    if(id){
+      this.employeeApi.updateEmployeeRole(this.teamAdmin.id,{admin:"null"}).subscribe()
+      this.employeeApi.updateEmployeeRole(id,{admin:"TA"}).subscribe()
+    }
+    console.log(id,email);
+    this.teamAdminForm.reset();
+  }
+
+
   listOfColumns: ColumnItem[] = [
     {
       name: 'Employee Id',

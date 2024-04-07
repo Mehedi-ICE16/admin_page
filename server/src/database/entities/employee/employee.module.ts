@@ -7,6 +7,8 @@ import { DatabaseModule } from '../../database.module';
 import { JwtMiddleware } from '../../jwt.middleware';
 import { EmployeeLoginService } from '../employee_login/employee_login.service';
 import { employeeLoginProvider } from '../employee_login/employee_login.provider';
+import { TeamService } from '../team/team.service';
+import { teamProvider } from '../team/team.provider';
 
 @Module({
     imports: [DatabaseModule],
@@ -14,6 +16,8 @@ import { employeeLoginProvider } from '../employee_login/employee_login.provider
     providers: [
       EmployeeService,
       employeeProvider,
+      TeamService,
+      teamProvider,
       // JwtMiddleware,
       // EmployeeLoginService,
       // employeeLoginProvider

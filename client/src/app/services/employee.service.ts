@@ -15,4 +15,8 @@ export class EmployeeService {
     console.log(id);
     return this.http.get<any>(this.root + '/employee/'+id);
   }
+
+  updateEmployeeRole(id:number | undefined,update: any) : Observable<any> {
+    return this.http.put<any>(this.root + '/employee/'+id,update);
+  }
 }

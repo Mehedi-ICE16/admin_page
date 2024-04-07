@@ -1,0 +1,30 @@
+<div class="container">
+    <h3 style="margin: 10px;">Create a new Team</h3>
+    <div class="form-container">
+        <form [formGroup]="addNewTeam" (ngSubmit)="onAddTeam()">
+            <div>
+                <input type="text" formControlName="teamName" placeholder="enter the name of new team...">
+            </div>
+           <div>
+            <textarea type="text" formControlName="description" placeholder="write the job description of this team..."> </textarea>
+           </div>
+           <div>
+            <label style="margin:10px">For which department is this team being created ?</label><br>
+            <select formControlName="selectDepartment">
+                <option *ngFor="let dept of departments; let i = index" [value]="i+1">{{dept.name}}</option>
+            </select>
+           </div>
+           <div formArrayName="requiredPDF">
+            <label>Add the name of Required Documents</label><br>
+            <div *ngFor="let pdf of requiredPDF.controls; let i = index">
+                <input type="text" [formControlName]="i" (change)="getInputtedPDF(i)">
+            </div>
+            <button type="button" (click)="addPDF()">+</button>
+           </div>
+    <div class="btn">
+        <button type="button" id="cancel" (click)="cancelClicked()">cancel</button>
+        <button type="submit" id="save">save</button>
+    </div>
+        </form>
+    </div>
+</div>

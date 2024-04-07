@@ -15,4 +15,8 @@ export class TeamApiService {
   getAllTeam () : Observable<ITeam[]> {
     return this.http.get<ITeam[]>(this.root + '/team');
   }
+
+  addTeam(newTeam:any): Observable<ITeam>{
+    return this.http.post<ITeam>(this.root+'/team',newTeam);
+  }
 }

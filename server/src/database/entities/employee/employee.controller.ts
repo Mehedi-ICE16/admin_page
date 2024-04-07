@@ -1,9 +1,10 @@
 import { Controller, Post, Get, Put, Delete, Body,Param } from '@nestjs/common';
 import { EmployeeService } from './employee.service';
+import { TeamService } from '../team/team.service';
 
 @Controller('/employee')
 export class EmployeeController {
-  constructor(private readonly employeeService: EmployeeService) {}
+  constructor(private readonly employeeService: EmployeeService, private readonly teamService: TeamService) {}
 
   @Post()
   async createEmployee(@Body() createEmployeeDto: any) {
@@ -17,7 +18,10 @@ export class EmployeeController {
 
   @Get('/:id')
   async findAllEmployeeByTeamId(@Param('id') team_id: number) {
-    return this.employeeService.findAllEmployeeByTeamId(team_id);
+    const team = await this.teamService.findOne(team_id);
+    const roles = team?.roles;
+    const employees = await this.employeeService.findAllEmployeeByTeamId(team_id);
+    return { roles, employees };
   }
 
   @Put('/:id')

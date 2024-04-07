@@ -4,17 +4,27 @@
     <div style="display: flex; ">
      <div style="display:flex;">
        <img src="../../../assets/people.png" height="80px" width="80px">
-       <span style="display: inline-flex; flex-direction: column; ">
-         Admin Name<br>Role<br>Location
+       <span style="margin-top: 15px; ">
+         Admin Name: {{teamAdmin?.name}}<br>Role: {{teamAdminRole}}
        </span>
      </div>
-     <div style="text-align: center; height: 40px; width: 40px; border-radius: 50%; background-color: rgb(30, 89, 141); font-weight: 600; font-size: x-large; margin-top: 20px; padding-bottom: 5px;">+</div>
+     <div id="add-admin-btn" (click)="clickedAdminChange = !clickedAdminChange">+</div>
+     <div *ngIf="clickedAdminChange" id="new-admin">
+         <form [formGroup]="teamAdminForm" (ngSubmit)="changeAdmin()">
+              <input type="text" id = "new-admin-id" placeholder="enter new admin id" formControlName="id">
+              <input type="email" id = "new-admin-email" placeholder="enter new admin email" formControlName="email" >
+              <div class="btn">
+                <button type="button" id="cancel-btn" (click)="clickedAdminChange = false">cancel</button>
+                <button type="submit" id="confirm-btn" >confirm</button>
+              </div>
+         </form>
+     </div>
     </div>
     <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed">
        <thead>
          <tr>
            <th
-             *ngFor="let column of listOfColumns; let i =index"
+             *ngFor="let column of listOfColumns; let i = index"
              [nzSortOrder]="column.sortOrder"
              [nzSortFn]="column.sortFn"
              [nzSortDirections]="column.sortDirections"
@@ -34,7 +44,7 @@
            <td>{{ data.email }}</td>
            <td style="position:relative;">
             <span nz-icon nzType="caret-down" nzTheme="outline" style="left: 0px; position: absolute; bottom:3.4dvh; font-size: large;"></span>
-             <select (change)="onRoleChange($event,i)" [ngClass]="{ 'reviewer': data.role_id === roleName.indexOf('Reviwer')+2,'maker': data.role_id === roleName.indexOf('Maker')+2,'checker': data.role_id === roleName.indexOf('checker')+ 2 }">
+             <select (change)="onRoleChange($event,data.id)" [ngClass]="{ 'reviewer': data.role_id === roleName.indexOf('Reviewer')+2,'maker': data.role_id === roleName.indexOf('Maker')+2,'checker': data.role_id === roleName.indexOf('Checker')+ 2 }">
                <option *ngFor="let role of roleName; let i = index" [value]="role!" [selected]="data.role_id === i+2">{{ role | titlecase }}</option>
               </select>
            </td>

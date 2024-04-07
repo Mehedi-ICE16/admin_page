@@ -30,6 +30,7 @@ import { NzSkeletonModule } from 'ng-zorro-antd/skeleton';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { TeamsComponent } from './components/teams/teams.component';
 import { RolesComponent } from './components/roles/roles.component';
+import { AddTeamComponent } from './components/add-team/add-team.component';
 // import { NgZorroAntdModule } from 'ng-zorro-antd';
 registerLocaleData(en);
 
@@ -42,7 +43,8 @@ registerLocaleData(en);
     SidebarComponent,
     LoaderComponent,
     TeamsComponent,
-    RolesComponent
+    RolesComponent,
+    AddTeamComponent
   ],
   imports: [
     BrowserModule,

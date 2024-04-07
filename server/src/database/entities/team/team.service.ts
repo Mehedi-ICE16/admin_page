@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Team } from './team.model';
-// import { Role } from '../role/role.model';
+import { Role } from '../role/role.model';
 // import { Employee } from '../employee/employee.model';
 
 @Injectable()
@@ -18,6 +18,9 @@ export class TeamService {
     return this.teamRepository.findAll<any>();
   }
 
+  async findOne(id: number): Promise<Team | null> {
+    return this.teamRepository.findOne<Team>({ where: { id },include: [{model:Role}] });
+  }
   async updateTeam(id: string, updateData: Partial<any>): Promise<void> {
     await this.teamRepository.update(updateData, { where: { id } });
   }

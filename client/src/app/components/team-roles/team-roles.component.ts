@@ -8,15 +8,19 @@ import { Router } from '@angular/router';
 })
 export class TeamRolesComponent  {
 
+  enableAddform: boolean = false;
   isLoading!: boolean;
   constructor( public router: Router) { }
 
-  teamClicked(team: boolean) {
+  teamClicked() {
 
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
     }, 2500);
+   }
+   addTeamEvent(enableTeamAdd: boolean){
+    this.enableAddform = enableTeamAdd;
    }
 
   }

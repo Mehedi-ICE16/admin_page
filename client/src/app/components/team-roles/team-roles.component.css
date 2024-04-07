@@ -17,3 +17,12 @@
     font-weight: 400;
     text-align: center;
 }
+.add-team {
+    margin-left: -25dvw;
+     background-color: #F5F5F5; 
+     z-index: 2; 
+     height: 80dvh;
+     width: 30dvw;
+     margin-top: 4dvh;
+     box-shadow: rgb(163, 169, 169,0.5);
+}

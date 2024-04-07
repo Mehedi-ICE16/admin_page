@@ -11,8 +11,8 @@ export class SharedDataService {
 
   constructor() { }
 
-  sendData(employees: any,name: string) {
-    const teamEmployee:{} = {employees,name};
+  sendData(employees: any,roles: any[],name: string) {
+    const teamEmployee:{} = {employees,roles,name};
     this.dataSubject.next(teamEmployee);
   }
 
