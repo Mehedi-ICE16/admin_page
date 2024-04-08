@@ -1,0 +1,55 @@
+<app-loader *ngIf = "isLoading"></app-loader>
+<div id="container">
+<h1>Workflow</h1>
+<h3 style="color: #7D6D6D; margin-top: 10px">{{teamName}} list</h3>
+<div class = "heading">
+    <div>Name</div>
+    <div>Description</div>
+    <div>Access</div>
+    <div>isAuthor ?</div>
+    <div>Sequence</div>
+</div>
+<div class="role-container">
+    <div *ngFor="let role of roles" class="role">
+        <div>{{role.name}}</div>
+        <div>{{role.description}}</div>
+        <div>{{role.TeamRole.access}}</div>
+        <div>{{role.TeamRole.isAuthor}}</div>
+        <div>{{role.TeamRole.sequence}}</div>
+    </div>
+    <div id = "add-role-btn" (click)="addForm = !addForm">+</div>
+</div>
+</div>
+<!-- new roled added form -->
+<div  [ngClass]="{ 'drawer-enable' : addForm, 'drawer-disable' : !addForm}">
+    <h3 style="margin: 10px;">Create a new Role</h3>
+    <div class="form-container">
+        <form [formGroup]="addNewRole" (ngSubmit)="onAddRole()">
+            <div>
+                <input type="text" formControlName="roleName" placeholder="enter the name of new role...">
+            </div>
+           <div>
+            <textarea type="text" formControlName="description" placeholder="write the job description of this role..."> </textarea>
+           </div>
+           <div>
+            <label style="margin:10px">Is this role an author ?</label><input type="checkbox" formControlName="isAuthor" [value]="false" style="height: 15px; width: 15px; margin-left: 0px; margin-bottom: 0px">
+           </div>
+           <div>
+            <Label>Which is the access ability of this role ?</Label><br>
+            <select formControlName="access">
+                <option>Read</option>
+                <option>Write</option>
+                <option selected>Read_Write</option>
+            </select>
+           </div>
+           <div>
+            <label style="margin:10px">What is the sequence of this role ?</label><br>
+            <input type = "number" formControlName="sequence">
+           </div>
+    <div class="btn">
+        <button type="button" id="cancel" (click)="cancelClicked()">cancel</button>
+        <button type="submit" id="save">save</button>
+    </div>
+        </form>
+    </div>
+</div>

@@ -1,7 +1,7 @@
+<app-loader *ngIf="isLoading"></app-loader>
 <div class="team-container">
     <h2>Teams List</h2>
     <div *ngFor="let team of teams; let i = index" (click)="teamClicked(i)">
         {{team.name}}
     </div>
-    <div id="add-team-btn" (click)="addTeam()">+</div>
 </div>

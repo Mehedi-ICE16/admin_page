@@ -2,7 +2,6 @@ import { Component,EventEmitter,OnInit, Output } from '@angular/core';
 import { FormGroup,FormBuilder,Validators,FormArray } from '@angular/forms';
 import { DepartmentService } from '../../services/department.service';
 import { TeamApiService } from '../../services/team-api.service';
-import { SharedDataService } from '../../services/shared-data.service';
 
 @Component({
   selector: 'add-team',
@@ -14,7 +13,7 @@ export class AddTeamComponent implements OnInit {
   departments!: any[];
 
   @Output() hideAddForm = new EventEmitter<any>();
-   constructor(private fb: FormBuilder, private deptService: DepartmentService, private teamApi: TeamApiService, private sharedData: SharedDataService) { }
+   constructor(private fb: FormBuilder, private deptService: DepartmentService, private teamApi: TeamApiService) { }
 
   ngOnInit(){
 

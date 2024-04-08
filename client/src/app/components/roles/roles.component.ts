@@ -77,8 +77,15 @@ export class RolesComponent implements OnInit{
     this.selectedRole = event.target.value;
     const role_id = this.roles.find((role:any) => this.selectedRole === role.name).id;
     console.log(id,role_id);
-    this.employeeApi.updateEmployeeRole(id,{role_id}).subscribe()
+    this.employeeApi.updateEmployeeRole(id,{role_id}).subscribe(res => {
+      this.listOfData.forEach((employee:any) => {
+        if(employee.id === res.id){
+          employee.role_id = res.role_id;
+        }
+      })  
+    })
   }
+
 
   clickedAdminChange: boolean = false;
   teamAdminForm!: FormGroup;
@@ -90,9 +97,16 @@ export class RolesComponent implements OnInit{
       this.employeeApi.updateEmployeeRole(this.teamAdmin.id, { admin : "null" }).subscribe();
       this.employeeApi.updateEmployeeRole(id,{admin:"TA"}).subscribe( res => {
         this.teamAdmin = res;
+
+        this.roles.forEach((role:any) =>{
+          if(role.id === this.teamAdmin.role_id){
+            this.teamAdminRole = role.name;
+          }
+        })
+
+        // console.log(this.teamAdmin.name,this.teamAdminRole);
       } );
     }
-    console.log(id,email);
     this.teamAdminForm.reset();
   }
 

@@ -10,5 +10,4 @@ export const canActivate = (router: ActivatedRouteSnapshot, state: RouterStateSn
    else {
     return route.createUrlTree(['/login']);
    }
-//    return token? true : false;
 }

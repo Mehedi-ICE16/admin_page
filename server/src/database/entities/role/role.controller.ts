@@ -12,26 +12,14 @@ export class RoleController {
   async create(@Body() createRoleDto: any) {
     const { team_id,access,isAuthor,sequence } = createRoleDto;
     const newRole = await this.roleService.createRole(createRoleDto);
-    const { id } = newRole;
+    const { id,name,description } = newRole;
     const teamRole = await this.teamRoleService.createTeamRole({ team_id, role_id: id, access, isAuthor, sequence });
-    return newRole;
+    return { id,name,description,TeamRole: teamRole};
   }
 
   @Get()
   async findAllRole() {
     return this.roleService.findAllRole();
-  }
-  @Get('/:team_id')
-  async findAllRoleByTeamId(@Param('id') team_id: number) {
-    // const roles = this.roleService.findAllRoleByTeamId(id);
-    // let employees: Employee[] = [];
-
-    // const roleId: number[] = (await roles).map(role => role.id);
-    // const roleName: string[] = (await roles).map(role => role.name);
-
-    // employees = await this.employeeService.findAllEmployeeByTeamId(roleId);
-
-    // return { roleId,roleName, employees };
   }
 
   @Put('/:id')

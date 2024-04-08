@@ -1,0 +1,32 @@
+.team-container {
+    /* top: 20dvh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30dvh;;
+}
+
+.team-container div {
+    background-color:  #34639F;
+    width: 15dvw;
+    border-radius: 5px;
+    height: 7dvh;
+    padding: 10px;
+    color: #f2eaea;
+    font-size: small;
+    font-weight: 400;
+    text-align: center;
+}
+#add-team-btn{
+    display: flex;
+     justify-content: center;
+      align-items: center;
+  height: 30px;
+  width: 30px;
+   border-radius: 50%; 
+   background-color: rgb(30, 89, 141); 
+   font-weight: 600;
+    font-size: x-large;
+}

@@ -5,10 +5,14 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TeamRolesComponent } from './components/team-roles/team-roles.component';
 import { canActivate } from './routeGuard/auth.guard';
+import { Workflow1Component } from './components/workflow1/workflow1.component';
+import { Workflow2Component } from './components/workflow2/workflow2.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'workflow1', component: Workflow1Component,canActivate:[canActivate] },
+  { path: 'workflow2/:id', component: Workflow2Component,canActivate:[canActivate] },
   { path: 'teamroles', component: TeamRolesComponent,canActivate:[canActivate] },
   { path: 'dashboard', component: DashboardComponent,canActivate:[canActivate] },
   { path: 'sidebar', component: SidebarComponent,canActivate:[canActivate] },

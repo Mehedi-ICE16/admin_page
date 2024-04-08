@@ -31,6 +31,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { TeamsComponent } from './components/teams/teams.component';
 import { RolesComponent } from './components/roles/roles.component';
 import { AddTeamComponent } from './components/add-team/add-team.component';
+import { Workflow1Component } from './components/workflow1/workflow1.component';
+import { Workflow2Component } from './components/workflow2/workflow2.component';
 // import { NgZorroAntdModule } from 'ng-zorro-antd';
 registerLocaleData(en);
 
@@ -44,7 +46,9 @@ registerLocaleData(en);
     LoaderComponent,
     TeamsComponent,
     RolesComponent,
-    AddTeamComponent
+    AddTeamComponent,
+    Workflow1Component,
+    Workflow2Component
   ],
   imports: [
     BrowserModule,

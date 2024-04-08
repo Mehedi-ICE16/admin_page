@@ -27,4 +27,8 @@ export class SidebarComponent {
   dashboardClicked(){
     this.router.navigateByUrl('dashboard');
   }
+
+  workflowClicked(){
+    this.router.navigateByUrl('workflow1');
+  }
 }

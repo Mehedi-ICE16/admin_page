@@ -43,7 +43,7 @@ export class TeamsComponent {
   }
 
   showTeams(newTeam: any) {
-    this.teams.push(newTeam);
+    if(newTeam) this.teams.push(newTeam);
     // console.log(this.teams);
   }
 

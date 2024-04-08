@@ -30,7 +30,6 @@ export class TeamService {
   }
 
   async findOneById(id: number): Promise<Team | null>{
-    console.log("Service id: "+id);
     return this.teamRepository.findOne<Team>({ where:{ id } });
   }
 
