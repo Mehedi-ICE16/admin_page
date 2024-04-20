@@ -2,6 +2,7 @@ import { Component,EventEmitter,OnInit, Output } from '@angular/core';
 import { FormGroup,FormBuilder,Validators,FormArray } from '@angular/forms';
 import { DepartmentService } from '../../services/department.service';
 import { TeamApiService } from '../../services/team-api.service';
+import { ITeam } from '../../interfaces/team.interface';
 
 @Component({
   selector: 'add-team',
@@ -12,7 +13,7 @@ export class AddTeamComponent implements OnInit {
   addNewTeam!: FormGroup;
   departments!: any[];
 
-  @Output() hideAddForm = new EventEmitter<any>();
+  @Output() hideAddForm = new EventEmitter<boolean | ITeam>();
    constructor(private fb: FormBuilder, private deptService: DepartmentService, private teamApi: TeamApiService) { }
 
   ngOnInit(){
@@ -50,8 +51,8 @@ export class AddTeamComponent implements OnInit {
     const { teamName , description,selectDepartment } = this.addNewTeam.value;
     const team = {name:teamName,description,dept_id:selectDepartment,required_pdf:this.pdf};
     // console.log(team);
-
-    this.teamApi.addTeam(team).subscribe(res => this.hideAddForm.emit({showForm: false,res}));
+    this.hideAddForm.emit(false);
+    this.teamApi.addTeam(team).subscribe(res => this.hideAddForm.emit(res));
   
   }
 

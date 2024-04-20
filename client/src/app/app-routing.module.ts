@@ -7,6 +7,7 @@ import { TeamRolesComponent } from './components/team-roles/team-roles.component
 import { canActivate } from './routeGuard/auth.guard';
 import { Workflow1Component } from './components/workflow1/workflow1.component';
 import { Workflow2Component } from './components/workflow2/workflow2.component';
+import { PeopleComponent } from './components/people/people.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'teamroles', component: TeamRolesComponent,canActivate:[canActivate] },
   { path: 'dashboard', component: DashboardComponent,canActivate:[canActivate] },
   { path: 'sidebar', component: SidebarComponent,canActivate:[canActivate] },
+  { path: 'people', component: PeopleComponent, canActivate: [canActivate]},
   { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 

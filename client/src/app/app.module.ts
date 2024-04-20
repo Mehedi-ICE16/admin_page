@@ -33,6 +33,8 @@ import { RolesComponent } from './components/roles/roles.component';
 import { AddTeamComponent } from './components/add-team/add-team.component';
 import { Workflow1Component } from './components/workflow1/workflow1.component';
 import { Workflow2Component } from './components/workflow2/workflow2.component';
+import { PeopleComponent } from './components/people/people.component';
+import { DepartmentComponent } from './components/department/department.component';
 // import { NgZorroAntdModule } from 'ng-zorro-antd';
 registerLocaleData(en);
 
@@ -48,7 +50,9 @@ registerLocaleData(en);
     RolesComponent,
     AddTeamComponent,
     Workflow1Component,
-    Workflow2Component
+    Workflow2Component,
+    PeopleComponent,
+    DepartmentComponent
   ],
   imports: [
     BrowserModule,

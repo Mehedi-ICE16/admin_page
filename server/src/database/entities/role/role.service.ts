@@ -16,11 +16,15 @@ export class RoleService {
     return this.roleRepository.findAll<any>();
   }
 
+  async findOne(id): Promise<any> {
+    return this.roleRepository.findOne({where: {id}});
+  }
+
   async updateRole(id: string, updateData: Partial<any>): Promise<void> {
     await this.roleRepository.update(updateData, { where: { id } });
   }
 
-  async deleteRole(id: string): Promise<void> {
+  async deleteRole(id: number): Promise<void> {
     await this.roleRepository.destroy({ where: { id } });
   }
 

@@ -9,6 +9,8 @@ import { EmployeeLoginService } from '../employee_login/employee_login.service';
 import { employeeLoginProvider } from '../employee_login/employee_login.provider';
 import { TeamService } from '../team/team.service';
 import { teamProvider } from '../team/team.provider';
+import { RoleService } from '../role/role.service';
+import { roleProvider } from '../role/role.provider';
 
 @Module({
     imports: [DatabaseModule],
@@ -18,6 +20,8 @@ import { teamProvider } from '../team/team.provider';
       employeeProvider,
       TeamService,
       teamProvider,
+      RoleService,
+      roleProvider,
       // JwtMiddleware,
       // EmployeeLoginService,
       // employeeLoginProvider

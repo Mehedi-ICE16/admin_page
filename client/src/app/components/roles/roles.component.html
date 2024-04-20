@@ -44,7 +44,7 @@
            <td>{{ data.email }}</td>
            <td style="position:relative;">
             <span nz-icon nzType="caret-down" nzTheme="outline" style="left: 0px; position: absolute; bottom:3.4dvh; font-size: large;"></span>
-             <select (change)="onRoleChange($event,data.id)" [ngClass]="{ 'reviewer': data.role_id === roleName.indexOf('Reviewer')+2,'maker': data.role_id === roleName.indexOf('Maker')+2,'checker': data.role_id === roleName.indexOf('Checker')+ 2 }">
+             <select (change)="onRoleChange($event,data.id)" [ngClass]="{ 'reviewer': data.role_id === roleName.indexOf('Reviewer')+2,'maker': data.role_id === roleName.indexOf('Maker')+2,'checker': data.role_id === roleName.indexOf('Checker')+ 2,'super-admin': data.id === 1 }">
                <option *ngFor="let role of roleName; let i = index" [value]="role!" [selected]="data.role_id === i+2">{{ role | titlecase }}</option>
               </select>
            </td>

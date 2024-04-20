@@ -17,7 +17,6 @@ export class TeamRolesComponent  {
   constructor( public router: Router) { }
 
   teamClicked() {
-
     this.isLoading = true;
     setTimeout(() => {
       this.isLoading = false;
@@ -29,8 +28,9 @@ export class TeamRolesComponent  {
 
    hideTeamEvent(enableTeamAdd: any) {
     const { showForm,res } = enableTeamAdd;
+    this.enableAddform = false;
+    console.log(this.enableAddform);
     this.teams.showTeams(res);
-    this.enableAddform = showForm;
    }
 
   }

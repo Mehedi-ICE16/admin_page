@@ -33,6 +33,16 @@
   align-items: center;
   opacity: 2;
 }
+
+.super-admin {
+  text-align: center;
+  border-radius: 15px;
+  background-color: rgb(239, 122, 84);
+  border-style: none;
+  padding: 5px;
+  align-items: center;
+  opacity: 2;
+}
 .container {
   height: 100dvh;
   width: 60dvw;

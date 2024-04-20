@@ -18,7 +18,7 @@ export class TeamController {
   @Get('/role/:id')
   async findAllRoleByTeamId(@Param('id') id: number) {
     const roles = this.teamService.findOne(id);
-    console.log(roles);
+    // console.log(roles);
     return roles;
   }
 

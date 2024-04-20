@@ -11,6 +11,7 @@
            <div>
             <label style="margin:10px">For which department is this team being created ?</label><br>
             <select formControlName="selectDepartment">
+                <option value="" disabled selected>--select department--</option>
                 <option *ngFor="let dept of departments; let i = index" [value]="i+1">{{dept.name}}</option>
             </select>
            </div>

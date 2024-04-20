@@ -13,9 +13,10 @@
     <div *ngFor="let role of roles" class="role">
         <div>{{role.name}}</div>
         <div>{{role.description}}</div>
-        <div>{{role.TeamRole.access}}</div>
-        <div>{{role.TeamRole.isAuthor}}</div>
-        <div>{{role.TeamRole.sequence}}</div>
+        <div>{{role.TeamRole?.access}}</div>
+        <div>{{role.TeamRole?.isAuthor}}</div>
+        <div>{{role.TeamRole?.sequence}}</div>
+        <div (click)="removeRole(role.id)">X</div>
     </div>
     <div id = "add-role-btn" (click)="addForm = !addForm">+</div>
 </div>
@@ -35,16 +36,17 @@
             <label style="margin:10px">Is this role an author ?</label><input type="checkbox" formControlName="isAuthor" [value]="false" style="height: 15px; width: 15px; margin-left: 0px; margin-bottom: 0px">
            </div>
            <div>
-            <Label>Which is the access ability of this role ?</Label><br>
+            <Label style="margin:10px">Which is the access ability of this role ?</Label><br>
             <select formControlName="access">
+                <option value="" [disabled]="true" [selected]="true">--select accessibility--</option>
                 <option>Read</option>
                 <option>Write</option>
-                <option selected>Read_Write</option>
+                <option>Read_Write</option>
             </select>
            </div>
            <div>
             <label style="margin:10px">What is the sequence of this role ?</label><br>
-            <input type = "number" formControlName="sequence">
+            <input type = "number" formControlName="sequence" placeholder="enter the sequence number of this role">
            </div>
     <div class="btn">
         <button type="button" id="cancel" (click)="cancelClicked()">cancel</button>

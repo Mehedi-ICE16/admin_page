@@ -4,6 +4,7 @@ import { TeamApiService } from '../../services/team-api.service';
 import { ActivatedRoute } from '@angular/router';
 import { RoleService } from '../../services/role.service';
 import { ITeam } from '../../interfaces/team.interface';
+import { IRole } from '../../interfaces/role.interface';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class Workflow2Component {
   teamName: string = 'A/C opening List';
   teamId!: number;
   isLoading: boolean = false;
-  roles: any[] = [];
+  roles: IRole[] = [];
   addForm: boolean = false;
   teams: ITeam[] = [];
 
@@ -57,9 +58,9 @@ export class Workflow2Component {
     this.addForm = false;
     const { roleName , description,selectTeam,access,sequence,isAuthor } = this.addNewRole.value;
     const role = {name:roleName,description,team_id:this.teamId,access,sequence,isAuthor};
-    console.log(role);
+    // console.log(role);
     this.roleApi.addRole(role).subscribe(res => {
-      console.log(res);
+      // console.log(res);
       this.roles.push(res);
     });
     this.addNewRole.reset();
@@ -67,6 +68,9 @@ export class Workflow2Component {
 
   cancelClicked(){
     this.addForm = false;
+  }
+  removeRole(id: number | undefined) {
+    this.roleApi.deleteTeamRole(id,this.teamId).subscribe( );
   }
   showLoader() {
     this.isLoading = true;

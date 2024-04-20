@@ -16,6 +16,10 @@ export class EmployeeService {
     return this.employeeRepository.findAll<any>();
   }
 
+  async findOne(id: number): Promise<any>{
+    return this.employeeRepository.findOne<Employee>({where: { id }})
+  }
+
   async findByEmail(email:string): Promise<any> {
     return this.employeeRepository.findOne<Employee>( { where: {email} } );
   }

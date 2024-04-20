@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ITeamRole} from '../interfaces/team-role.interface';
+import { IRole } from '../interfaces/role.interface'
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,11 @@ export class RoleService {
     return this.http.get<any>(this.rootUrl + '/team/role/' + teamId);
   }
 
-  addRole(role: any): Observable<any> {
-    return this.http.post<any>(this.rootUrl + '/role', role);
+  addRole(role: ITeamRole): Observable<IRole> {
+    return this.http.post<IRole>(this.rootUrl + '/role', role);
+  }
+
+  deleteTeamRole(roleId: number | undefined, teamId: number): Observable<IRole> {
+    return this.http.delete<IRole>(this.rootUrl + '/role/' + roleId+'/'+teamId);
   }
 }

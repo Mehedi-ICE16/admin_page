@@ -1,0 +1,32 @@
+<app-loader *ngIf="isLoading"></app-loader>
+<div class="container">
+    <div class="people-container" *ngIf="!isLoading">
+        <h2 style="text-align: center;">People</h2>
+        <input id = "people-search" type="text" placeholder="search here...">
+        <div *ngFor = "let people of peoples" class="people" (click)="showDetails(people.id)">
+            <div>
+                <img src="../../../assets/people.png" height="50px" width="50px">
+            </div>
+            <div>
+                Name: {{people.name}}<br>
+                Email: {{people.email}}<br>
+                Contact: {{people.phone}}
+            </div>
+        </div>
+    </div>
+    <div class="people-details-container" *ngIf="!isLoading">
+        <h2>Profile</h2>
+        <div id="people-details">
+            <div>
+                <img src="../../../assets/people.png" height="60px" width="60px" style="margin-top: 4dvh">
+            </div>
+            <div>
+                Employee Name : {{selectedPeople.employee.name}}<br>
+                Role : {{selectedPeople.roleName}}<br>
+                Email: {{selectedPeople.employee.email}}<br>
+                Phone Number: {{selectedPeople.employee.phone}}<br>
+                Team : {{selectedPeople.teamName}}
+            </div>
+        </div>
+    </div>
+</div>

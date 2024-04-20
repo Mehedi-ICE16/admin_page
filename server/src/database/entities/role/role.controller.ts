@@ -27,8 +27,8 @@ export class RoleController {
     await this.roleService.updateRole(id, updateData);
   }
 
-  @Delete('/:id')
-  async deleteRole(@Param('id') id: string): Promise<void> {
-    await this.roleService.deleteRole(id);
+  @Delete('/:id/:team_id')
+  async deleteRole(@Param('id') id: number, @Param('team_id') team_id: number): Promise<void> {
+   await this.teamRoleService.deleteTeamRole(team_id,id);
   }
 }
