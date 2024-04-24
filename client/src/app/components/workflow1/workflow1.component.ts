@@ -4,7 +4,7 @@ import { ITeam } from '../../interfaces/team.interface';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-workflow1',
+  selector: 'workflow1',
   templateUrl: './workflow1.component.html',
   styleUrl: './workflow1.component.css'
 })

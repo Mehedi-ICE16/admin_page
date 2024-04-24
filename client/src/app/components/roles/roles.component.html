@@ -1,6 +1,7 @@
 <div class="container">
-     
-    <h2>Teams & Roles > {{selectedTeam}}</h2>
+     <add-role [ngClass]="{ 'drawer-enable' : addRoleForm, 'drawer-disable' : !addRoleForm}" (addRoleEvent)="hideAddRoleForm($event)"></add-role>
+    <h2 style="display: inline;">Teams & Roles > {{selectedTeam}}</h2>
+    <button nz-button (click)="addRoleForm = !addRoleForm" nzType="primary" style="display: inline; top:8dvh; left: 35dvw">Add Role</button>
     <div style="display: flex; ">
      <div style="display:flex;">
        <img src="../../../assets/people.png" height="80px" width="80px">

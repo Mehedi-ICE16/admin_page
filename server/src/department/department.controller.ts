@@ -1,6 +1,6 @@
 import { Controller, Post, Get, Put, Delete, Body,Param } from '@nestjs/common';
 import { DepartmentService } from './department.service';
-import { IDepartment } from '../../interfaces/department.interface';
+import { IDepartment } from './department.interface';
 
 @Controller('/department')
 export class DepartmentController {

@@ -18,8 +18,18 @@ export class PeopleComponent implements OnInit {
   peoples!: IPeople[];
   isLoading: boolean = false;
   selectedPeople!: SelectedPeople;
+  
+  showForm: boolean | IPeople = false;
+  hideAddEmployeeForm(event: boolean | IPeople) {
+    if(typeof event === 'boolean') this.showForm = event;
+    else {
+      this.peopleApi.addNewEmployee(event).subscribe(res => {
+        this.peoples.push(res);
+      })
+    }
+  }
 
-  constructor ( private peopleApi: EmployeeService) {}
+  constructor ( private peopleApi: EmployeeService) { }
 
   ngOnInit(): void {
     this.showLoader();
@@ -36,7 +46,7 @@ export class PeopleComponent implements OnInit {
     }, 2000);
    }
 
-   showDetails(id: number){
+   showDetails(id: number | undefined){
     this.showLoader();
      this.peopleApi.getOnePeople(id).subscribe(res => {
        this.selectedPeople = res;

@@ -13,6 +13,10 @@ export class EmployeeService {
 
   root = 'http://localhost:3000';
 
+  addNewEmployee(newEmployee: IPeople): Observable<IPeople> {
+    return this.http.post<IPeople>(this.root + '/employee', newEmployee);
+  }
+
   getAllEmployee (id:number) : Observable<any> {
     console.log(id);
     return this.http.get<any>(this.root + '/employee/team_id/'+id);
@@ -26,7 +30,7 @@ export class EmployeeService {
     return this.http.get<IPeople[]>(this.root+'/employee');
   }
 
-  getOnePeople(id: number): Observable<SelectedPeople>{
+  getOnePeople(id: number | undefined): Observable<SelectedPeople>{
     return this.http.get<SelectedPeople>(this.root+'/employee/'+id);
   }
 }

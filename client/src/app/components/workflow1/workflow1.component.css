@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
-    margin-top: 30dvh;;
+    /* margin-top: 1rem; */
 }
 
 .team-container div {

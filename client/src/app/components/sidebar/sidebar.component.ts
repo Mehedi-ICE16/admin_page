@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
 export class SidebarComponent {
 
   team: boolean = false;
-  dashboardBGColor: boolean = true;
+  deptBGColor: boolean = true;
+  dashboardBGColor!: boolean;
   teamBGColor!: boolean;
   workflowBGColor!: boolean;
   peopleBGColor!: boolean;
@@ -19,15 +20,26 @@ export class SidebarComponent {
   @Output() dataEvent = new EventEmitter<boolean>();
 
   dashboardClicked(){
-    this.teamBGColor = false;
+    this.deptBGColor = false;
     this.dashboardBGColor = true;
     this.workflowBGColor = false;
     this.peopleBGColor = false;
+    this.teamBGColor = false;
     this.router.navigateByUrl('dashboard');
+  }
+
+  deptClicked() {
+    this.deptBGColor = true;
+    this.dashboardBGColor = false;
+    this.workflowBGColor = false;
+    this.peopleBGColor = false;
+    this.teamBGColor = false;
+    this.router.navigateByUrl('department');
   }
 
   
   teamClicked(){
+    this.deptBGColor = false;
     this.teamBGColor = true;
     this.dashboardBGColor = false;
     this.workflowBGColor = false;
@@ -36,6 +48,7 @@ export class SidebarComponent {
   }
 
   peopleClicked(){
+    this.deptBGColor = false;
     this.teamBGColor = false;
     this.dashboardBGColor = false;
     this.workflowBGColor = false;
@@ -44,6 +57,7 @@ export class SidebarComponent {
   }
 
   workflowClicked(){
+    this.deptBGColor = false;
     this.teamBGColor = false;
     this.dashboardBGColor = false;
     this.workflowBGColor = true;

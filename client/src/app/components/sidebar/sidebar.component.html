@@ -5,9 +5,13 @@
 <div class="wrapper">          
     <ul class="sidebar" nz-menu nzMode="inline">
 
-    <li  class="sidebar-li" 
+    <li
+        class="sidebar-li"
+        [ngClass]="{'clickedDiv': deptBGColor}"
+        (click) = "deptClicked()"
+        style="height: 23dvh"
     >
-      <h2> Prime Bank</h2>
+      <h2> Prime Bank</h2><br>
       <img src="../../assets/logo.png" style="width: 60px; height: 60px;" alt="prime_logo"> <br>
      
     </li>

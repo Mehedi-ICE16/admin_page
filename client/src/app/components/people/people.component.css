@@ -15,7 +15,7 @@
 .people {
     background-color: #FFFFFF;
     height: 15dvh;
-    width: 20dvw;
+    width: 25dvw;
     display: flex;
     gap: 10px;
     box-shadow: 0 2px 4px rgb(163, 169, 169);
@@ -46,3 +46,27 @@
     padding: 10px;
     border-radius: 10px;
 }
+
+.drawer-disable {
+    position: fixed;
+    top: 10dvh;
+    right: -30dvw;
+    width: 30dvw;
+    height: 80dvh;
+    background-color: #e0d7d7;
+    transition: right 0.7s ease; 
+    z-index: 999; 
+  }
+  
+  .drawer-enable {
+    position: fixed;
+    /* top: 2dvh; */
+    right: 0dvw;
+    width: 30dvw;
+    height: 100dvh;
+    background-color: #e0d7d7;
+    transition: right 0.5s ease; 
+    z-index: 999; 
+    border-radius: 10px 0px 0px 10px;
+  }
+  

@@ -63,7 +63,7 @@
 }
 
 #cancel-btn {
-  background-color: rgb(222, 50, 50); 
+  background-color: rgb(219, 100, 100); 
   border-radius: 10px;
   color: #FFFFFF;
   border-style: none;
@@ -72,7 +72,7 @@
 }
 
 #confirm-btn {
-   background-color: rgb(60, 211, 60);
+   background-color: rgb(111, 199, 111);
    border-radius: 10px;
    color: #FFFFFF;
    border-style: none;
@@ -92,7 +92,7 @@
   border-left: none; 
   border-right: none; 
   border-top: none;
-  border-bottom: 2px solid rgb(72, 67, 67); 
+  border-bottom: 2px solid rgb(148, 145, 145); 
   padding: 5px;
   margin-right: 10px;
   border-radius: 5px;
@@ -102,7 +102,7 @@
   border-left: none; 
   border-right: none; 
   border-top: none;
-  border-bottom: 2px solid rgb(72, 67, 67); 
+  border-bottom: 2px solid rgb(148, 145, 145); 
   padding: 5px;
   border-radius: 5px;
 }
@@ -110,4 +110,27 @@
 .btn {
   display: flex;
   gap: 20dvw;
+}
+
+.drawer-disable {
+  position: fixed;
+  top: 10dvh;
+  right: -30dvw;
+  width: 30dvw;
+  height: 80dvh;
+  background-color: #e0d7d7;
+  transition: right 0.7s ease; 
+  z-index: 999; 
+}
+
+.drawer-enable {
+  position: fixed;
+  top: 7dvh;
+  right: 0dvw;
+  width: 30dvw;
+  height: 95dvh;
+  background-color: #e0d7d7;
+  transition: right 0.5s ease; 
+  z-index: 999; 
+  border-radius: 10px 0px 0px 10px;
 }

@@ -1,5 +1,5 @@
 export interface IPeople {
-    id: number;
+    id?: number;
     name: string;
     age: number;
     email: string;

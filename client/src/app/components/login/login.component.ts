@@ -30,7 +30,7 @@ onSubmit() {
       next: data => {
         this.loginForm.reset();
         if(data.token){
-          this.router.navigate(['dashboard']);
+          this.router.navigate(['department']);
         }
       },
       error: err => {

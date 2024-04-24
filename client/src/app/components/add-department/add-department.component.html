@@ -1,0 +1,17 @@
+<div>
+    <h3 style="margin: 10px;">Create a new Department</h3>
+    <div class="form-container">
+        <form [formGroup]="addNewDept" (ngSubmit)="onAddDepartment()">
+            <div>
+                <input type="text" formControlName="roleName" placeholder="enter the name of new role...">
+            </div>
+           <div>
+            <textarea type="text" formControlName="description" placeholder="write the job description of this role..."> </textarea>
+           </div>
+    <div class="btn">
+        <button type="button" id="cancel" (click)="cancelClicked()">cancel</button>
+        <button type="submit" id="save">save</button>
+    </div>
+        </form>
+    </div>
+</div>

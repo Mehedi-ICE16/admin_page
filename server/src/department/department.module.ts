@@ -3,8 +3,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { DepartmentController } from './department.controller';
 import { DepartmentService } from './department.service';
 import { departmentProvider } from './department.providers';
-import { DatabaseModule } from '../../database.module';
-import { JwtMiddleware } from '../../jwt.middleware';
+import { DatabaseModule } from '../database/database.module';
+import { JwtMiddleware } from '../auth/jwt.middleware';
 import { EmployeeLoginService } from '../employee_login/employee_login.service';
 import { employeeLoginProvider } from '../employee_login/employee_login.provider';
 

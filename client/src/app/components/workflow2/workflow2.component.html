@@ -1,25 +1,48 @@
 <app-loader *ngIf = "isLoading"></app-loader>
+
 <div id="container">
-<h1>Workflow</h1>
-<h3 style="color: #7D6D6D; margin-top: 10px">{{teamName}} list</h3>
-<div class = "heading">
-    <div>Name</div>
-    <div>Description</div>
-    <div>Access</div>
-    <div>isAuthor ?</div>
-    <div>Sequence</div>
-</div>
-<div class="role-container">
-    <div *ngFor="let role of roles" class="role">
-        <div>{{role.name}}</div>
-        <div>{{role.description}}</div>
-        <div>{{role.TeamRole?.access}}</div>
-        <div>{{role.TeamRole?.isAuthor}}</div>
-        <div>{{role.TeamRole?.sequence}}</div>
-        <div (click)="removeRole(role.id)">X</div>
-    </div>
-    <div id = "add-role-btn" (click)="addForm = !addForm">+</div>
-</div>
+    <!-- <div><workflow1></workflow1></div> -->
+    <div>
+        <h2>Workflow</h2>
+        <h3 style="color: #7D6D6D; margin-top: 10px"> Workflow for {{teamName}} team</h3>
+        
+        <button nz-button (click)="addForm = !addForm" nzType="primary" style="left: 60dvw">Add</button>
+        <br />
+        <br />
+        <nz-table #editRowTable nzBordered style="height: auto" [nzData]="roles">
+          <thead>
+            <tr>
+              <th >Name</th>
+              <th >Description</th>
+              <th>Access</th>
+              <th >isAuthor</th>
+              <th >Sequence</th>
+              <th >Action1</th>
+              <th >Action2</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let role of roles" class="editable-row">
+              <td>
+                <div class="editable-cell" [hidden]="editId === role.id" (click)="startEdit(role.id)">
+                  {{ role.name }}
+                </div>
+                <input [hidden]="editId !== role.id" type="text" nz-input [(ngModel)]="role.name" (blur)="stopEdit()" />
+              </td>
+              <td>{{ role.description }}</td>
+              <td>{{ role.TeamRole?.access }}</td>
+              <td>{{ role.TeamRole?.isAuthor }}</td>
+              <td>{{ role.TeamRole?.sequence }}</td>
+              <td>
+                <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteRole(role.TeamRole?.id)">Delete</a>
+              </td>
+              <td>
+                <a nz-popconfirm nzPopconfirmTitle="Sure to edit?" (nzOnConfirm)="editRole(role.TeamRole?.id)">Edit</a>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+        </div>
 </div>
 <!-- new roled added form -->
 <div  [ngClass]="{ 'drawer-enable' : addForm, 'drawer-disable' : !addForm}">

@@ -1,7 +1,7 @@
 import { Table, Column, Model,HasMany } from 'sequelize-typescript';
 import { DataTypes } from 'sequelize';
 import { Team } from '../team/team.model';
-import { IDepartment } from '../../interfaces/department.interface';
+import { IDepartment } from './department.interface';
 
 @Table ({
     timestamps: false, // Disable timestamps

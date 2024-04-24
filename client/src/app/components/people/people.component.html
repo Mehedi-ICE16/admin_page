@@ -1,5 +1,6 @@
 <app-loader *ngIf="isLoading"></app-loader>
 <div class="container">
+    <add-employee [ngClass]="{ 'drawer-enable' : showForm, 'drawer-disable' : !showForm}" (addEmployeeEvent)="hideAddEmployeeForm($event)"></add-employee>
     <div class="people-container" *ngIf="!isLoading">
         <h2 style="text-align: center;">People</h2>
         <input id = "people-search" type="text" placeholder="search here...">
@@ -15,7 +16,9 @@
         </div>
     </div>
     <div class="people-details-container" *ngIf="!isLoading">
-        <h2>Profile</h2>
+    <h2 style="display: inline; margin-top: 2dvh;">Profile</h2>
+    <button nz-button (click)="showForm = !showForm" nzType="primary" style="display: inline; left:50dvw; height: 8dvh; width:10dvw">Add Employee</button>
+
         <div id="people-details">
             <div>
                 <img src="../../../assets/people.png" height="60px" width="60px" style="margin-top: 4dvh">

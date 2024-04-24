@@ -7,6 +7,14 @@ import { ITeam } from '../../interfaces/team.interface';
 import { IRole } from '../../interfaces/role.interface';
 
 
+interface ItemData {
+  id: string;
+  name: string;
+  age: string;
+  address: string;
+}
+
+
 @Component({
   selector: 'app-workflow2',
   templateUrl: './workflow2.component.html',
@@ -23,6 +31,27 @@ export class Workflow2Component {
   addNewRole!: FormGroup;
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private roleApi: RoleService, private teamApi: TeamApiService) { }
+
+  i = 0;
+  editId!: number|undefined;
+  listOfData: ItemData[] = [];
+
+  startEdit(id: number|undefined): void {
+    this.editId = id;
+  }
+
+  stopEdit(): void {
+    this.editId = 0;
+  }
+
+  deleteRole(id: number|undefined): void {
+    // this.listOfData = this.listOfData.filter(d => d.id !== id);
+  }
+
+  editRole(id: number | undefined) {
+
+  }
+
 
   ngOnInit(): void {
     this.showLoader();
@@ -59,7 +88,7 @@ export class Workflow2Component {
     const { roleName , description,selectTeam,access,sequence,isAuthor } = this.addNewRole.value;
     const role = {name:roleName,description,team_id:this.teamId,access,sequence,isAuthor};
     // console.log(role);
-    this.roleApi.addRole(role).subscribe(res => {
+    this.roleApi.addTeamRole(role).subscribe(res => {
       // console.log(res);
       this.roles.push(res);
     });

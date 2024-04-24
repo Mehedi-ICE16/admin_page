@@ -1,0 +1,93 @@
+.dept-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  gap: 10px;
+}
+
+.dept-container div {
+  background-color:  #34639F;
+  width: 15dvw;
+  border-radius: 5px;
+  height: 7dvh;
+  padding: 10px;
+  color: #f2eaea;
+  font-size: small;
+  font-weight: 400;
+  text-align: center;
+}
+#add-dept-btn{
+  display: flex;
+   justify-content: center;
+    align-items: center;
+height: 30px;
+width: 30px;
+ border-radius: 50%; 
+ background-color: rgb(30, 89, 141); 
+ font-weight: 600;
+  font-size: x-large;
+}
+
+.drawer-disable {
+  position: fixed;
+  top: 10dvh;
+  right: -30dvw;
+  width: 30dvw;
+  height: 80dvh;
+  background-color: #e0d7d7;
+  transition: right 0.7s ease; 
+  z-index: 999; 
+}
+
+.drawer-enable {
+  position: fixed;
+  top: 7dvh;
+  right: 0dvw;
+  width: 30dvw;
+  height: 95dvh;
+  background-color: #e0d7d7;
+  transition: right 0.5s ease; 
+  z-index: 999; 
+  border-radius: 10px 0px 0px 10px;
+}
+
+
+/* .wrapper {
+    width: 10dvw;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px  rgb(153, 179, 153,0.5);
+  }
+
+  button {
+    width: 100%;
+    height: 10dvh;
+    margin-bottom: 12px;
+    margin-top: 5px;
+  }
+  .sidebar{
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    height: 100vh;
+    width: 10dvw;
+    justify-content: center;
+  }
+
+  .sidebar-li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .sidebar li {
+    height: 15dvh;
+  }
+  .clickedDiv {
+    background-color: #34639F;
+    color: #FFFFFF;
+  } */

@@ -1,0 +1,49 @@
+<div>
+    <h3 style="margin: 10px;">Create a new Employee</h3>
+    <div class="form-container">
+        <form [formGroup]="addNewEmployee" (ngSubmit)="onAddEmployee()">
+            <div>
+                <input type="text" formControlName="name" placeholder="enter the name of new employee...">
+            </div>
+            <div>
+                <input type="text" formControlName="age" placeholder="enter the age of new employee...">
+            </div>
+            <div>
+                <input type="email" formControlName="email" placeholder="enter the email of new employee...">
+            </div>
+            <div>
+                <input type="text" formControlName="phone" placeholder="enter the contact of new employee...">
+            </div>
+           <div>
+            <Label style="margin:10px">Which is the admin status of this employee ?</Label><br>
+            <select formControlName="access">
+                <option value="" [disabled]="true" [selected]="true">--select admin status--</option>
+                <option>SA</option>
+                <option>DA</option>
+                <option>TA</option>
+                <option>RA</option>
+                <option>none</option>
+            </select>
+           </div>
+           <div>
+              <select formControlName="team">
+                <option value="" [disabled]="true" [selected]="true">--select team--</option>
+                <option *ngFor="let team of teams; let i = index" [value]="i+1">{{team.name}}</option>
+              </select>
+           </div>
+           <div>
+              <select formControlName="role">
+                <option value="" [disabled]="true" [selected]="true">--select role--</option>
+                <option *ngFor="let role of roles; let i = index" [value]="i+1">{{role.name}}</option>
+              </select>
+           </div>
+           <div>
+            <label style="margin:10px">Is this employee active ?</label><input type="checkbox" formControlName="active" [value]="false" style="height: 15px; width: 15px; margin-left: 0px; margin-bottom: 0px">
+           </div>
+    <div class="btn">
+        <button type="button" id="cancel" (click)="cancelClicked()">cancel</button>
+        <button type="submit" id="save">save</button>
+    </div>
+        </form>
+    </div>
+</div>

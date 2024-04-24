@@ -40,6 +40,11 @@ export class RolesComponent implements OnInit{
   roleId: number[] = [];
   roles: any[] = [];
   selectedRoleClass!: string;
+  addRoleForm!: boolean;
+
+  hideAddRoleForm(event: boolean){
+    this.addRoleForm = event;
+  }
 
   constructor( private sharedService: SharedDataService, private employeeApi: EmployeeService, private fb: FormBuilder) {
     this.selectedRoleClass = 'reviewer';
@@ -51,6 +56,7 @@ export class RolesComponent implements OnInit{
       this.roles = data.roles;
       this.roleId = [];
       this.roleName = [];
+      this.addRoleForm = false;
       // console.log(this.teamEmployee);
       this.teamAdmin = this.teamEmployee.find((employee:any) => employee.admin === "TA" || employee.admin === "SA");
       console.log(this.teamAdmin);
