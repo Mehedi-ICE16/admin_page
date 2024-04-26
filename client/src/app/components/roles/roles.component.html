@@ -1,5 +1,5 @@
 <div class="container">
-     <add-role [ngClass]="{ 'drawer-enable' : addRoleForm, 'drawer-disable' : !addRoleForm}" (addRoleEvent)="hideAddRoleForm($event)"></add-role>
+     <div *ngIf = "teamId !== undefined"><add-role [team_id]="teamId" [ngClass]="{ 'drawer-enable' : addRoleForm, 'drawer-disable' : !addRoleForm}" (addRoleEvent)="hideAddRoleForm($event)"></add-role></div>
     <h2 style="display: inline;">Teams & Roles > {{selectedTeam}}</h2>
     <button nz-button (click)="addRoleForm = !addRoleForm" nzType="primary" style="display: inline; top:8dvh; left: 35dvw">Add Role</button>
     <div style="display: flex; ">
@@ -10,6 +10,8 @@
        </span>
      </div>
      <div id="add-admin-btn" (click)="clickedAdminChange = !clickedAdminChange">+</div>
+
+     <!-- change team admin form -->
      <div *ngIf="clickedAdminChange" id="new-admin">
          <form [formGroup]="teamAdminForm" (ngSubmit)="changeAdmin()">
               <input type="text" id = "new-admin-id" placeholder="enter new admin id" formControlName="id">
@@ -21,6 +23,8 @@
          </form>
      </div>
     </div>
+
+     <!-- employee data table -->
     <nz-table #filterTable [nzData]="listOfData" nzTableLayout="fixed">
        <thead>
          <tr>
@@ -45,6 +49,8 @@
            <td>{{ data.email }}</td>
            <td style="position:relative;">
             <span nz-icon nzType="caret-down" nzTheme="outline" style="left: 0px; position: absolute; bottom:3.4dvh; font-size: large;"></span>
+
+            <!-- role selction dropdown -->
              <select (change)="onRoleChange($event,data.id)" [ngClass]="{ 'reviewer': data.role_id === roleName.indexOf('Reviewer')+2,'maker': data.role_id === roleName.indexOf('Maker')+2,'checker': data.role_id === roleName.indexOf('Checker')+ 2,'super-admin': data.id === 1 }">
                <option *ngFor="let role of roleName; let i = index" [value]="role!" [selected]="data.role_id === i+2">{{ role | titlecase }}</option>
               </select>

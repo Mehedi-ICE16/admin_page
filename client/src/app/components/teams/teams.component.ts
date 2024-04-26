@@ -26,7 +26,7 @@ export class TeamsComponent {
 
     this.teamApi.getAllTeam().subscribe({
       next: data => {
-        this.teams = data;
+        this.teams = data.sort((a,b) => a.id - b.id ).filter(team => team.name !== 'Super Admin');
         console.log(this.teams);
         this.teamName = this.teams[0].name;
         this.employeeApi.getAllEmployee(this.teams[0].id).subscribe(data => {

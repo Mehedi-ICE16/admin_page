@@ -15,6 +15,7 @@
     margin: 2rem;
     display: flex;
     gap: 2dvw;
+    /* right: 40dvw; */
 }
 
 .role-container {

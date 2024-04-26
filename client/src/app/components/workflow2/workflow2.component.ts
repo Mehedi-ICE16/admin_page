@@ -27,8 +27,9 @@ export class Workflow2Component {
   roles: IRole[] = [];
   addForm: boolean = false;
   teams: ITeam[] = [];
-
+  showAddForm: boolean = false;
   addNewRole!: FormGroup;
+  roleId!: number | undefined;
 
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private roleApi: RoleService, private teamApi: TeamApiService) { }
 
@@ -38,6 +39,12 @@ export class Workflow2Component {
 
   startEdit(id: number|undefined): void {
     this.editId = id;
+  }
+
+  createForm(id: number | undefined): void {
+    this.showAddForm = !this.showAddForm;
+    this.roleId = id;
+    console.log(this.showAddForm,this.roleId);
   }
 
   stopEdit(): void {
@@ -67,7 +74,7 @@ export class Workflow2Component {
 
     this.teamApi.getAllTeam().subscribe({
       next: data => {
-        this.teams = data;
+        this.teams = data.sort((a,b) => a.id - b.id );
       },
       error: err => {
         console.error(err);

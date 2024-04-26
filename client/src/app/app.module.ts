@@ -38,7 +38,13 @@ import { DepartmentComponent } from './components/department/department.componen
 import { AddRoleComponent } from './components/add-role/add-role.component';
 import { AddDepartmentComponent } from './components/add-department/add-department.component';
 import { AddEmployeeComponent } from './components/add-employee/add-employee.component';
+import { AddFormComponent } from './components/add-form/add-form.component';
 // import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { NzModalModule } from 'ng-zorro-antd/modal';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 registerLocaleData(en);
 
 @NgModule({
@@ -58,7 +64,8 @@ registerLocaleData(en);
     DepartmentComponent,
     AddRoleComponent,
     AddDepartmentComponent,
-    AddEmployeeComponent
+    AddEmployeeComponent,
+    AddFormComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +84,12 @@ registerLocaleData(en);
     NzMenuModule,
     NzButtonModule,
     NzSkeletonModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    NzModalModule,
+    NzDrawerModule,
+    NzInputModule,
+    NzSelectModule,
+    NgMultiSelectDropDownModule
   ],
   providers: [
     {

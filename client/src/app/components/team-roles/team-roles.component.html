@@ -1,6 +1,6 @@
 <div style="display:flex; gap: 2dvw; margin-left: 5dvw">
     <app-teams (addTeamEvent)="addTeamEvent($event)" (addLoader)="teamClicked()" ></app-teams>
-    <app-roles></app-roles>
+    <app-roles ></app-roles>
     <app-loader *ngIf="isLoading"></app-loader>
     <add-team (hideAddForm)="hideTeamEvent($event)" [ngClass]="{ 'drawer-enable' : enableAddform, 'drawer-disable' : !enableAddform}"></add-team>
 </div>

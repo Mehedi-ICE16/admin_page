@@ -3,7 +3,7 @@
     <add-employee [ngClass]="{ 'drawer-enable' : showForm, 'drawer-disable' : !showForm}" (addEmployeeEvent)="hideAddEmployeeForm($event)"></add-employee>
     <div class="people-container" *ngIf="!isLoading">
         <h2 style="text-align: center;">People</h2>
-        <input id = "people-search" type="text" placeholder="search here...">
+        <input id = "people-search" type="text" placeholder="search here by employee id..." #searchInput (input)="searchTerm$.next(searchInput.value)">
         <div *ngFor = "let people of peoples" class="people" (click)="showDetails(people.id)">
             <div>
                 <img src="../../../assets/people.png" height="50px" width="50px">

@@ -4,5 +4,9 @@ export interface IRole {
     id?: number;
     name: string;
     description: string;
-    TeamRole?: ITeamRole
+    TeamRole?: ITeamRole;
+    access?: string;
+    sequence?: number;
+    isAuthor?: boolean;
+    team_id?: number;
 }

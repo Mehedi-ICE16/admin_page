@@ -3,6 +3,7 @@ import { NzTableFilterFn, NzTableFilterList, NzTableSortFn, NzTableSortOrder } f
 import { SharedDataService } from '../../services/shared-data.service';
 import { EmployeeService } from '../../services/employee.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { IRole } from '../../interfaces/role.interface';
 
 interface DataItem {
   id: number;
@@ -41,9 +42,14 @@ export class RolesComponent implements OnInit{
   roles: any[] = [];
   selectedRoleClass!: string;
   addRoleForm!: boolean;
+  teamId!: number;
 
-  hideAddRoleForm(event: boolean){
-    this.addRoleForm = event;
+  hideAddRoleForm(event: boolean | IRole){
+    if(typeof event === 'boolean') this.addRoleForm = event;
+    else {
+      this.roles.push(event);
+      this.roleName.push(event.name);     
+    }
   }
 
   constructor( private sharedService: SharedDataService, private employeeApi: EmployeeService, private fb: FormBuilder) {
@@ -58,8 +64,9 @@ export class RolesComponent implements OnInit{
       this.roleName = [];
       this.addRoleForm = false;
       // console.log(this.teamEmployee);
-      this.teamAdmin = this.teamEmployee.find((employee:any) => employee.admin === "TA" || employee.admin === "SA");
-      console.log(this.teamAdmin);
+      this.teamAdmin = this.teamEmployee.find((employee:any) => employee.admin === "TA");
+      this.teamId = this.teamAdmin.team_id;
+      console.log(this.teamId);
       this.roles.forEach((role:any) =>{
         this.roleName.push(role.name);
         this.roleId.push(role.id);

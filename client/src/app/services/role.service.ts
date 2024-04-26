@@ -23,6 +23,7 @@ export class RoleService {
     return this.http.post<IRole>(this.rootUrl + '/role', role);
   }
   addRole(role: IRole): Observable<IRole> {
+    console.log(role);
     return this.http.post<IRole>(this.rootUrl + '/role', role);
   }
 

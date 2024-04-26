@@ -18,7 +18,8 @@ export class Workflow1Component {
       this.showLoader();
       this.teamApi.getAllTeam().subscribe({
         next: data => {
-          this.teams = data;
+          this.teams = data.sort((a,b) => a.id - b.id ).filter(team => team.name !== 'Super Admin');
+          console.log(data);
         },
         error: err => {
           console.error(err);
@@ -33,7 +34,7 @@ export class Workflow1Component {
       }, 2500);
      }
     teamClicked(i: number) {
-      this.router.navigate(['workflow2',i+1]);
+      this.router.navigate(['workflow2',i]);
     }
   }
   

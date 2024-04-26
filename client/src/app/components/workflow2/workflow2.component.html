@@ -1,12 +1,12 @@
 <app-loader *ngIf = "isLoading"></app-loader>
-
+<add-form [visible] = "showAddForm" [isVisible] = "showAddForm" [team_id] = "teamId" [role_id] = "roleId"></add-form>
 <div id="container">
     <!-- <div><workflow1></workflow1></div> -->
     <div>
         <h2>Workflow</h2>
         <h3 style="color: #7D6D6D; margin-top: 10px"> Workflow for {{teamName}} team</h3>
         
-        <button nz-button (click)="addForm = !addForm" nzType="primary" style="left: 60dvw">Add</button>
+        <button nz-button (click)="addForm = !addForm" nzType="primary" style="left: 65dvw">Add Workflow</button>
         <br />
         <br />
         <nz-table #editRowTable nzBordered style="height: auto" [nzData]="roles">
@@ -19,6 +19,7 @@
               <th >Sequence</th>
               <th >Action1</th>
               <th >Action2</th>
+              <th >Action3</th>
             </tr>
           </thead>
           <tbody >
@@ -38,6 +39,9 @@
               </td>
               <td>
                 <a nz-popconfirm nzPopconfirmTitle="Sure to edit?" (nzOnConfirm)="editRole(role.TeamRole?.id)">Edit</a>
+              </td>
+              <td>
+                <button [disabled] = "role.TeamRole?.access === 'Read'" nz-popconfirm nzPopconfirmTitle="Sure to edit?" (click)="createForm(role.id)">Create Form</button>
               </td>
             </tr>
           </tbody>

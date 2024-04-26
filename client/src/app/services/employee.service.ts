@@ -30,7 +30,7 @@ export class EmployeeService {
     return this.http.get<IPeople[]>(this.root+'/employee');
   }
 
-  getOnePeople(id: number | undefined): Observable<SelectedPeople>{
+  getOnePeople(id: number | undefined | string): Observable<SelectedPeople>{
     return this.http.get<SelectedPeople>(this.root+'/employee/'+id);
   }
 }
